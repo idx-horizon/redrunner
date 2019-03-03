@@ -1,0 +1,33 @@
+{% include "_header.html" %}
+{% include "_menubar.html" %}
+
+<h2>Number of runs listed: {{ count }}
+<form action='/ele/' method="post" name="form">
+	<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter" 
+	placeholder="(filter by)" value="{{ request.form['filter'] }}"></input>
+	<button type="submit" name="filter" value="Filter">Filter</button>
+</form>
+</h2>
+<table id='table' width="80%">
+		<tr>		
+			<th onclick="sortTable(0)" width="5%"  align="centre">#</th>
+			<th onclick="sortTable(1)" width="85%" align="left">Run</th>
+			<th onclick="sortTable(2)" width="5%"  align="center">Elevation</th>
+		</tr>
+		{% for item in data %}
+				<tr>				
+					<td align="center">{{ item.pos }}</td>
+					{% if item.url_status == "404" %}
+						<td align="left">{{ item.run }}</td>
+					{% else %}		
+						<td align="left"> 
+							<a href="http://parkrun.org.uk/{{ item.url }}/course">{{ item.run }}</a>
+						</td>
+					{% endif %}
+					<td align="right">{{ item.elevation }}</td>
+		{% endfor %}
+		<P>
+	</table>
+
+<p>
+{% include "_footer.html" %}

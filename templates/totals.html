@@ -1,0 +1,30 @@
+{% include "_header.html" %}
+{% include "_menubar.html" %}
+
+	<h1>{{ title }}</h1>
+	<div class="btn-group">
+	  <button class="button" onclick="location.href = '{{ parent_route }}/course'">Course</button>
+	  <button class="button" onclick="location.href = '{{ parent_route }}/minute'">Sub minute</button>
+	 	<button class="button" onclick="location.href = '{{ parent_route }}/year'">Year</button>
+		<button class="button" onclick="location.href = '{{ parent_route }}/month'">Month</button>
+		<button class="button" onclick="location.href = '{{ parent_route }}/az'">A-Z</button>
+	  <button class="button" onclick="location.href = '{{ parent_route }}/missing'">Missing A-Z</button>
+  </div>
+  <P style="clear:both"></P><BR>
+	<div style="width:60%">
+		<table id='table'>
+		<tr>
+			<th onclick="sortTable(0)" width="60%" align="left">{{ page|title }} records {{ datacount}}</th>
+			<th onclick="sortTable(1)" width="40%" align="center">#</th>
+		</tr>
+				{% for key, value in data | dictsort() %}		
+				<tr>
+					<td>{{ key }}</td>
+					<td align="center">{{ value }}</td>
+				</tr>
+		{% endfor %}
+		<P>
+		</table>
+	</div>
+{% include "_footer.html" %}
+
