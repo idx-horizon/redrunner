@@ -49,7 +49,7 @@ def handle_error_route(error):
 
 @app.route('/error/')
 def error():
-	render_template('error.html', form=None)
+	return render_template('error.html', form=None)
 
 @app.route('/')
 def index():
