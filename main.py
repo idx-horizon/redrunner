@@ -95,7 +95,7 @@ def parkrun(id=None):
 								page = page,
 								parent_route = parent_route,
 								runnerid = runnerid)
-else:
+	else:
 		return render_template('parkrun.html',
 								data = pgdata,
 								runnerid = runnerid,
@@ -253,7 +253,7 @@ if __name__ == '__main__':
 	THISDB = 'REPOSITORY.db'
 	LOCAL_DATA = os.path.join(os.environ['HOME'] )
 
-    public_flag = os.environ['RR_PUBLIC_FLAG']
+	public_flag = os.environ['RR_PUBLIC_FLAG']
 	mydb = DBO(THISDB)
 
 	with mydb:
