@@ -14,7 +14,7 @@
 	<div style="width:60%">
 		<table id='table'>
 		<tr>
-			<th onclick="sortTable(0)" width="60%" align="left">{{ page|title }} records {{ datacount}}</th>
+			<th onclick="sortTable(0)" width="60%" align="left">{{ page|title }} {{ datacount}}</th>
 			<th onclick="sortTable(1)" width="40%" align="center">#</th>
 		</tr>
 				{% for key, value in data | dictsort() %}		

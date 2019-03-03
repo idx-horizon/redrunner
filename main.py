@@ -49,14 +49,17 @@ def handle_error_route(error):
 def index():
 	return redirect('/home/')
 	
-	
+@app.route('/login/')
+def login():
+	return redirect('/login/')
+
 @app.route('/home/')
 @app.route('/home/<name>')
 def home(name=None):
 	return render_template('home.html', 
-													name=name, 
-													runners=runners, 
-													timestamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
+							name=name,
+							runners=runners,
+							timestamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
 	
 @app.route('/parkrun/', methods=['POST','GET'])
 @app.route('/parkrun/<id>/', methods=['POST','GET'])
