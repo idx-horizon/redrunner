@@ -20,3 +20,4 @@ requests
 ui
 #time
 html5lib
+flask_login
