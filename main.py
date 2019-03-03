@@ -88,20 +88,20 @@ def parkrun(id=None):
 		parent_route = request.path.replace('/'+page, '')
 		
 		return render_template('totals.html',
-													title = rdtitle[runnerid],
-													data = rdtotals[runnerid][page],
-													datacount = '(' + str(len(rdtotals[runnerid][page])) + ')' if page != 'missing' else '',
-													aggregrate = request.path,
-													page = page,
-													parent_route = parent_route,
-													runnerid = runnerid)
-	else:	
+								title = rdtitle[runnerid],
+								data = rdtotals[runnerid][page],
+								datacount = '(' + str(len(rdtotals[runnerid][page])) + ')' if page != 'missing' else '',
+								aggregrate = request.path,
+								page = page,
+								parent_route = parent_route,
+								runnerid = runnerid)
+else:
 		return render_template('parkrun.html',
-													data = pgdata,
-													runnerid = runnerid,
-													title = rdtitle[runnerid],
-													threshold = threshold,
-													runners = runners)
+								data = pgdata,
+								runnerid = runnerid,
+								title = rdtitle[runnerid],
+								threshold = threshold,
+								runners = runners)
 
 @app.route('/runner/')
 def runner(id=None):
@@ -111,10 +111,10 @@ def runner(id=None):
 			pgtitle = 'All Runners'
 			
 	return render_template('runner.html',
-													data=pgdata,
-													title=pgtitle, 
-													runners=runners,
-													totals={'total': 'TEST', 'year': 2019 })		
+							data=pgdata,
+							title=pgtitle,
+							runners=runners,
+							totals={'total': 'TEST', 'year': 2019 })
 
 @app.route('/ele/', methods=['POST','GET'])
 #@app.route('/ele/<run>')
@@ -249,12 +249,10 @@ def count_by(runner, type='course'):
 	return dict(ct)
 		
 if __name__ == '__main__':
-#	console.clear()
-	
+
 	THISDB = 'REPOSITORY.db'
-#       THISDB = 'REPOSITORY.db'
 	LOCAL_DATA = os.path.join(os.environ['HOME'] )
-#	LOCAL_DATA = os.path.join('/private/var/mobile/Library/Mobile Documents/iCloud~com~omz-software~Pythonista3/Documents','_DATA')
+
 	mydb = DBO(THISDB)
 
 	with mydb:
