@@ -17,6 +17,8 @@ import httplib2
 from flask import Flask, jsonify, abort, make_response, render_template, redirect, request
 from flask_login import login_user, logout_user, current_user, login_required
 
+from src.forms import LoginForm, RegistrationForm
+
 import src.parkrun as PARK
 import src.parkcharts as parkcharts
 from src.db import DBO 
@@ -57,7 +59,8 @@ def index():
 	
 @app.route('/login/')
 def login():
-	return render_template('login.html', form=None)
+	form = LoginForm()
+	return render_template('login.html', form=form)
 
 @app.route('/home/')
 @app.route('/home/<name>')
