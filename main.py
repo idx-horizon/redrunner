@@ -17,7 +17,7 @@ import httplib2
 from flask import Flask, jsonify, abort, make_response, render_template, redirect, request
 from flask_login import login_user, logout_user, current_user, login_required
 
-from src.forms import LoginForm, RegistrationForm
+from src.forms import LoginForm
 
 import src.parkrun as PARK
 import src.parkcharts as parkcharts
