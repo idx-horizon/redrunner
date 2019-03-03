@@ -51,7 +51,7 @@ def index():
 	
 @app.route('/login/')
 def login():
-	return redirect('/login/')
+	return render_template('login.html')
 
 @app.route('/home/')
 @app.route('/home/<name>')
