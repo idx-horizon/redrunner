@@ -15,6 +15,7 @@ from bs4 import BeautifulSoup
 import httplib2
 
 from flask import Flask, jsonify, abort, make_response, render_template, redirect, request
+from flask_login import login_user, logout_user, current_user, login_required
 
 import src.parkrun as PARK
 import src.parkcharts as parkcharts
@@ -43,15 +44,20 @@ def error_404(error):
 	
 @app.errorhandler(500)
 def handle_error_route(error):
-	return make_response(jsonify({'error': '500 - Internal application error'}), 500)
-	
+	return redirect('/error/')
+#	return make_response(jsonify({'error': '500 - Internal application error'}), 500)
+
+@app.route('/error/')
+def error():
+	return redirect('/error/')
+
 @app.route('/')
 def index():
 	return redirect('/home/')
 	
 @app.route('/login/')
 def login():
-	return render_template('login.html')
+	return render_template('login.html', form=None)
 
 @app.route('/home/')
 @app.route('/home/<name>')
