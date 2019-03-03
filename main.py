@@ -258,7 +258,7 @@ if __name__ == '__main__':
 	mydb = DBO(THISDB)
 
 	with mydb:
-		runners = mydb.dcur.execute('select * from runner order by rid').fetchall()
+		runners = mydb.dcur.execute('select * from runner where public = 1 order by rid').fetchall()
 		
 	rd = {}
 	rdtitle = {}
