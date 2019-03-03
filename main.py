@@ -107,7 +107,7 @@ else:
 def runner(id=None):
 	print('**', request.path)
 	with mydb:
-			pgdata = mydb.dcur.execute('select * from runner where public_flag = 1 order by rid').fetchall()
+			pgdata = mydb.dcur.execute('select * from runner where public_flag = ' + str(public_flag) + ' order by rid').fetchall()
 			pgtitle = 'All Runners'
 			
 	return render_template('runner.html',
@@ -253,10 +253,11 @@ if __name__ == '__main__':
 	THISDB = 'REPOSITORY.db'
 	LOCAL_DATA = os.path.join(os.environ['HOME'] )
 
+    public_flag = os.environ['RR_PUBLIC_FLAG']
 	mydb = DBO(THISDB)
 
 	with mydb:
-		runners = mydb.dcur.execute('select rid, fullname, threshold from runner where public_flag = 1 order by rid').fetchall()
+		runners = mydb.dcur.execute('select * from runner where public_flag = ' + str(public_flag) + ' order by rid').fetchall()
 		
 	print('Number of runners: {}'.format(len(runners)))	
 	rd = {}
