@@ -10,7 +10,7 @@
 		</tr>
 		{% for item in data %}
 				<tr>
-					<td><a href="/parkrun/{{ item.rid }}">{{ item.fullname }}</a></td>
+					<td><a href="/parkrun/{{ item.rid }}">{{ item.fullname }}</a>{{ item.public}}</td>
 					<td>{{ item.threshold }}</td>
 					<td align="center"><a href="/parkrun/{{ item.rid }}/course"> 📊</a></td>
 		{% endfor %}
