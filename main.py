@@ -260,7 +260,7 @@ if __name__ == '__main__':
 	with mydb:
 		runners = mydb.dcur.execute('select rid, fullname, threshold from runner where public_flag = 1 order by rid').fetchall()
 		
-	print('Number of runners: {}'.format(len(runners))	
+	print('Number of runners: {}'.format(len(runners)))	
 	rd = {}
 	rdtitle = {}
 	rdtotals = {}
