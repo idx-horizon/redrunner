@@ -47,13 +47,13 @@ class DBO:
 		con = sqlite3.connect(self.dbname) # Warning: This file is created in the current directory
 
 		
-		con.execute('CREATE TABLE runner (rid char(10) not null, fullname char(50) NOT NULL, threshold char(10))')
-		con.execute('INSERT INTO runner (rid, fullname, threshold) VALUES (\'184594\', \'Ian\', \'32:00\')')
-		con.execute('INSERT INTO runner (rid, fullname, threshold) VALUES (\'185368\', \'Matt\', \'25:00\')')
-		con.execute('INSERT INTO runner (rid, fullname, threshold) VALUES (\'4327482\', \'Caroline\', \'34:00\')')
-		con.execute('INSERT INTO runner (rid, fullname, threshold) VALUES (\'2564629\', \'Michael\', \'25:00\')')		
-		con.execute('INSERT INTO runner (rid, fullname, threshold) VALUES (\'23656\',\'Eileen\',\'34:00\')')
-		con.execute('INSERT INTO runner (rid, fullname, threshold) VALUES (\'3158074\', \'Sam\', \'30:00\')')		
+		con.execute('CREATE TABLE runner (rid char(10) not null, public boolean, fullname char(50) NOT NULL, threshold char(10))')
+		con.execute('INSERT INTO runner (rid, fullname, public, threshold) VALUES (\'184594\',True, \'Ian\', \'32:00\')')
+		con.execute('INSERT INTO runner (rid, fullname, public, threshold) VALUES (\'185368\', True, \'Matt\', \'25:00\')')
+		con.execute('INSERT INTO runner (rid, fullname, public, threshold) VALUES (\'4327482\', False, \'Caroline\', \'34:00\')')
+		con.execute('INSERT INTO runner (rid, fullname, public, threshold) VALUES (\'2564629\', False, \'Michael\', \'25:00\')')		
+		con.execute('INSERT INTO runner (rid, fullname, public, threshold) VALUES (\'23656\', False, \'Eileen\',\'34:00\')')
+		con.execute('INSERT INTO runner (rid, fullname, public, threshold) VALUES (\'3158074\', False, \'Sam\', \'30:00\')')		
 				
 		con.commit()
 
