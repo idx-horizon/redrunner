@@ -15,5 +15,5 @@
 	</div>
 	 
 	<a href="/ele" {% if url_for(request.endpoint) == '/ele/' %}class="active"{% endif %}>Elevations</a>	
-	<a style=float:right href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>	
+	<a href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
 	</div>
