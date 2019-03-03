@@ -20,7 +20,7 @@ EXPOSE 80
 
 # Define environment variable
 ENV NAME "Red Runner"
-ENV RED_RUNNERS "184594|185368"
+ENV RR_PUBLIC_FLAG 1
 #ENV PORT 5000
 # Run app.py when the container launches
 CMD ["python", "main.py"]
