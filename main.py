@@ -126,30 +126,6 @@ def elevation(run=None):
 		data = get_elevations(None)
 
 	return render_template('elevation.html', data=data, count=len(data), runners=runners)
-			
-def test():
-	console.clear()
-	mydb = DBO(THISDB)
-	with mydb:
-		for sql in {'select * from todo where status = 1',
-		'select * from sqlite_master',
-		'select * from reference',
-		'select * from person',
-		'select * from elevation'}:
-			r = mydb.getdata(sql)
-			print('\n** Executing: %s' % (sql,))
-			for member in r:
-				for k in member.keys():
-					print(k, '=' , member[k])
-			#pp.pprint(r)
-			print('** Result count:',len(r), '\n')
-			
-		print('**Tables with columns')
-		for tbl in mydb.cur.execute('select name from sqlite_master where type = \'table\'').fetchall():
-			mydb.cur.execute('select * from ' + tbl[0] + ' where 1=0').fetchall()
-			
-			cols = next(zip(*mydb.cur.description))
-			print('* Table %s: Columns: %s' % (tbl[0], cols))
 
 def check_url_status(url):
 	headers  =  {
@@ -289,9 +265,7 @@ if __name__ == '__main__':
 	print('Current directory: ', os.getcwd())
 	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
 					
-	port = int(os.environ.get("PORT", 8000))
-#	webbrowser.open('googlechrome://localhost:' + str(port))
-#	webbrowser.open('safari-http://localhost:' + str(port))
+	port = int(os.environ.get("RED_PORT", 8000))
 
 	runapp(port,True)
 
