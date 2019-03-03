@@ -21,3 +21,5 @@ ui
 #time
 html5lib
 flask_login
+flask_wtf
+wtforms
