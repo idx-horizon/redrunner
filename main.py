@@ -73,7 +73,6 @@ def home(name=None):
 @app.route('/parkrun/<id>/year', methods=['POST','GET'])
 @app.route('/parkrun/<id>/month', methods=['POST','GET'])
 @app.route('/parkrun/<id>/missing', methods=['POST','GET'])
-@login_required
 def parkrun(id=None):
 	print('**', request.path, request.path.split('/')[-1])		
 
