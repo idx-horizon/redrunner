@@ -1,8 +1,5 @@
-import webbrowser
 import json
 import os
-import pprint as pp
-import console
 from dateutil import parser
 import datetime
 import re
@@ -25,6 +22,7 @@ import src.parkrun as PARK
 import src.parkcharts as parkcharts
 from src.db import DBO 
 
+from . import app_
 
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
@@ -141,7 +139,7 @@ def elevation(run=None):
 
 def check_url_status(url):
 	headers  =  {
-			'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
+			'User-Agent': app.config['USER_AGENT']
 	}		
 	h = httplib2.Http()
 	resp = h.request(url, 'HEAD', headers=headers)
@@ -150,7 +148,7 @@ def check_url_status(url):
 def getpostcode(course):
 		url = 'http://www.parkrun.org.uk/' + course + '/course/'
 		headers  =  {
-			'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
+			'User-Agent': app.config['USER_AGENT']
 		}	
 		html = urlopen(Request(url, headers=headers))
 		soup = BeautifulSoup(html, 'html5lib')
