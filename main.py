@@ -59,7 +59,7 @@ def login():
 @app.route('/home/')
 @app.route('/home/<name>')
 def home(name=None):
-	return render_template('home.html', 
+	return render_template('home.html', appname=APPNAME,
 							name=name,
 							runners=runners,
 							timestamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
@@ -197,7 +197,7 @@ if __name__ == '__main__':
 
 	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
 					
-	port = int(os.environ.get("RED_PORT", 8000))
+	port = int(os.environ.get("RR_PORT", 8000))
 
 	runapp(port,True)
 
