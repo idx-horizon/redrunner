@@ -9,13 +9,13 @@ from collections import Counter
 
 from flask import Flask, jsonify, abort, make_response, render_template, redirect, request
 from flask_login import login_user, logout_user, current_user, login_required
-from flask_login import LoginManager
+#from flask_login import LoginManager
 
 from app import app, THISDB
 
-from app.utils import get_elevations, get_external_elevations, getpostcode, check_url_status
+from app.utils import get_elevations #, get_external_elevations, getpostcode, check_url_status, save_elevations
 from app.forms import LoginForm
-from app.config import Config
+#from app.config import Config
 
 import app.parkrun as PARK
 import app.parkcharts as parkcharts
@@ -140,21 +140,6 @@ def runapp(port,debug=True):
 	
 	app.run(host='0.0.0.0') #app.run(port=port, debug=debug)
 	
-def save_elevations():
-	runs = get_external_elevations()
-	id = 1
-	with mydb:
-		mydb.cur.execute('delete from reference where key = ?', ('elevations',))
-		store_runs = json.dumps(runs)
-		mydb.cur.execute('INSERT into reference values (?,?,?,?)', 
-											('elevations', 
-											  '',
-											  store_runs, 
-											  datetime.datetime.now()))
-		
-		mydb.conn.commit()
-		
-	print('Saved %s elevation records' % (len(runs,)))
 
 def count_by(runner, type='course'):
 	#ct = Counter({}.fromkeys(string.ascii_uppercase,0))	

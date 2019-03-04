@@ -65,3 +65,20 @@ def get_elevations(filter=None):
             data = [selected for selected in data if filter.lower() in selected['run'].lower()]
 
         return data
+
+
+def save_elevations():
+    runs = get_external_elevations()
+    id = 1
+    with mydb:
+        mydb.cur.execute('delete from reference where key = ?', ('elevations',))
+        store_runs = json.dumps(runs)
+        mydb.cur.execute('INSERT into reference values (?,?,?,?)',
+                         ('elevations',
+                          '',
+                          store_runs,
+                          datetime.datetime.now()))
+
+        mydb.conn.commit()
+
+    print('Saved %s elevation records' % (len(runs, )))
