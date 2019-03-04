@@ -239,7 +239,7 @@ def count_by(runner, type='course'):
 		
 if __name__ == '__main__':
 
-	THISDB = 'REPOSITORY.db'
+	THISDB = app.config['REPOSITORY']   #''REPOSITORY.db'
 	LOCAL_DATA = os.path.join(os.environ['HOME'] )
 
 	public_flag = os.environ['RR_PUBLIC_FLAG']
@@ -261,21 +261,20 @@ if __name__ == '__main__':
 
 		az_done = count_by(rd[runner['rid']], 'az')
 		missing = [l for l in string.ascii_uppercase if l not in az_done.keys()]
-		print('\n** {} completed {} \'A-Z\' letters. Still to complete {}\n\t {}'.
-					format(runner['fullname'], len(az_done), len(missing), missing))
+#		print('\n** {} completed {} \'A-Z\' letters. Still to complete {}\n\t {}'.
+#					format(runner['fullname'], len(az_done), len(missing), missing))
 					
 		rdtotals[runner['rid']] = {}
-		for total_type in {'year', 'month', 'minute', 'course', 'az'}:					
+		for total_type in {'year', 'month', 'minute', 'course', 'az'}:
 			rdtotals[runner['rid']][total_type] = count_by(rd[runner['rid']], total_type)
 			#for t in sorted(rdtotals[runner['rid']][total_type],reverse=True):
 			#	print(t, rdtotals[runner['rid']][total_type][t])
 		print('***', {l for l in string.ascii_uppercase if l not in az_done.keys()})
 		rdtotals[runner['rid']]['missing'] = {'\n'.join(missing): len(missing)}
 
-	chart_data = {'Ian': rdtotals['184594']['year'], 
-							#	'Michael': rdtotals['2564629']['year'],
-								'Matt': rdtotals['185368']['year']}
-	print('Current directory: ', os.getcwd())
+	chart_data = {'Ian':  rdtotals['184594']['year'],
+				  'Matt': rdtotals['185368']['year']}
+
 	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
 					
 	port = int(os.environ.get("RED_PORT", 8000))
