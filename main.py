@@ -24,6 +24,7 @@ import src.parkrun as PARK
 import src.parkcharts as parkcharts
 from src.db import DBO 
 
+loader=jinja2.FileSystemLoader('templates')
 
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
