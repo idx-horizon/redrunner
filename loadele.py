@@ -5,6 +5,8 @@ import datetime
 import json
 from app import app, THISDB
 
+app = Flask(__name__, template_folder='../templates')
+
 app.config.from_object(Config)
 print(app)
 mydb = DBO(THISDB)
