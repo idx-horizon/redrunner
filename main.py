@@ -2,27 +2,24 @@ import json
 import os
 from dateutil import parser
 import datetime
-import re
 import string
 
 from collections import Counter
 
-from urllib.request import urlopen, Request
-from bs4 import BeautifulSoup
-import httplib2
 
 from flask import Flask, jsonify, abort, make_response, render_template, redirect, request
 from flask_login import login_user, logout_user, current_user, login_required
 from flask_login import LoginManager
 
-from src import app, THISDB
+from app import app, THISDB
 
-from src.forms import LoginForm
-from src.config import Config
+from app.utils import get_elevations, get_external_elevations, getpostcode, check_url_status
+from app.forms import LoginForm
+from app.config import Config
 
-import src.parkrun as PARK
-import src.parkcharts as parkcharts
-from src.db import DBO 
+import app.parkrun as PARK
+import app.parkcharts as parkcharts
+from app.db import DBO
 
 
 @app.template_filter()
@@ -41,8 +38,7 @@ app.jinja_env.filters['datetimefilter'] = datetimefilter
 @app.errorhandler(404)
 def error_404(error):
 	return make_response(jsonify({'error': '404 - Not found'}), 404)
-	
-	
+
 @app.errorhandler(500)
 def handle_error_route(error):
 	return redirect('/error/')
@@ -138,65 +134,7 @@ def elevation(run=None):
 
 	return render_template('elevation.html', data=data, count=len(data), runners=runners)
 
-def check_url_status(url):
-	headers  =  {
-			'User-Agent': app.config['USER_AGENT']
-	}		
-	h = httplib2.Http()
-	resp = h.request(url, 'HEAD', headers=headers)
-	return resp[0]['status']
 
-def getpostcode(course):
-		url = 'http://www.parkrun.org.uk/' + course + '/course/'
-		headers  =  {
-			'User-Agent': app.config['USER_AGENT']
-		}	
-		html = urlopen(Request(url, headers=headers))
-		soup = BeautifulSoup(html, 'html5lib')
-		
-		pcs = re.findall("[A-Z]{1,2}[0-9][A-Z0-9]? [0-9][ABD-HJLNP-UW-Z]{2}", soup.text)
-		return (course, len(pcs), pcs, soup)
-		
-def get_external_elevations():
-	url = 'https://jegmar.com/stats-hq/fastest-races/parkrun'
-	print('** Getting external data')
-	html = urlopen(url)
-	
-	soup = BeautifulSoup(html, 'html5lib')
-	
-	tr = soup.find_all('tr')
-	
-	runs =[]
-	
-	id = 0
-	for row in tr: #[0:10]:
-		line = ''
-		for cell in row.find_all(['th','td'],class_=['column-1','column-2', 'column-4']):
-			line = line + ',' + cell.get_text().strip()
-		elements = line[1:].split(',')
-		
-		url = 'http://www.parkrun.org.uk/' + elements[1].lower().replace(' ','') + '/course/' 
-		url_status = check_url_status(url)
-		print(url_status, url)
-		runs.append ({'id': id, 
-									'pos': elements[0], 
-									'run': elements[1], 
-									'elevation': elements[2],
-									'url': elements[1].lower().replace(' ',''),
-									'url_status': url_status
-									})
-		id += 1
-		
-	return runs[1:]
-
-def get_elevations(filter=None):
-	with mydb:
-		data =  json.loads(mydb.dcur.execute('select * from reference where key=\'elevations\'').fetchall()[0]['value'])
-		if filter:
-			data = [selected for selected in data if filter.lower() in selected['run'].lower()]
-	
-		return data
-							
 def runapp(port,debug=True):
 	#port = int(os.environ.get("PORT", 80))
 	

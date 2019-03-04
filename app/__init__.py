@@ -1,8 +1,8 @@
 from flask import Flask
 from flask_login import LoginManager
-from src.config import Config
+from app.config import Config
 
-app = Flask(__name__,template_folder='../templates')
+app = Flask(__name__, template_folder='../templates')
 app.config.from_object(Config)
 
 login = LoginManager(app)

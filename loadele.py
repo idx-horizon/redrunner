@@ -1,7 +1,7 @@
 from main import get_elevations
 import main
-import src.db
-from src.db import DBO
+import app.db
+from app.db import DBO
 import datetime
 import json
 
