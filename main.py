@@ -54,7 +54,7 @@ def index():
 @app.route('/login/', methods=['POST','GET'])
 def login():
 	form = LoginForm()
-	return render_template('login.html', form=form)
+	return render_template('login.html', form=form, appname=APPNAME,)
 
 @app.route('/home/')
 @app.route('/home/<name>')
@@ -94,6 +94,7 @@ def parkrun(id=None):
 		parent_route = request.path.replace('/'+page, '')
 		
 		return render_template('totals.html',
+							    appname=APPNAME,
 								title = rdtitle[runnerid],
 								data = rdtotals[runnerid][page],
 								datacount = '(' + str(len(rdtotals[runnerid][page])) + ')' if page != 'missing' else '',
@@ -103,6 +104,7 @@ def parkrun(id=None):
 								runnerid = runnerid)
 	else:
 		return render_template('parkrun.html',
+							    appname=APPNAME,
 								data = pgdata,
 								runnerid = runnerid,
 								title = rdtitle[runnerid],
@@ -118,6 +120,7 @@ def runner(id=None):
 			pgtitle = 'All Runners'
 			
 	return render_template('runner.html',
+						    appname=APPNAME,
 							data=pgdata,
 							title=pgtitle,
 							runners=runners,
@@ -131,7 +134,7 @@ def elevation(run=None):
 	else:
 		data = get_elevations(mydb, None)
 
-	return render_template('elevation.html', data=data, count=len(data), runners=runners)
+	return render_template('elevation.html', appname=APPNAME, data=data, count=len(data), runners=runners)
 
 
 def runapp(port,debug=True):
