@@ -15,6 +15,8 @@ from flask import Flask, jsonify, abort, make_response, render_template, redirec
 from flask_login import login_user, logout_user, current_user, login_required
 from flask_login import LoginManager
 
+from src import app
+
 from src.forms import LoginForm
 from src.config import Config
 
@@ -22,7 +24,6 @@ import src.parkrun as PARK
 import src.parkcharts as parkcharts
 from src.db import DBO 
 
-from . import app_
 
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
