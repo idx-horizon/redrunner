@@ -44,11 +44,11 @@ def extract_tables(html_text):
 		data = [re.sub(remove_tag_pattern,'',d).strip() for d in re.findall(td_pattern,t)]
 
 		response[str(table_count)] = {'headers': headers,
-													'number_cols': len(headers),
-													'data_count': len(data),
-													'data': data,
-													'caption': caption,
-													'title': h2name}
+									'number_cols': len(headers),
+									'data_count': len(data),
+									'data': data,
+									'caption': caption,
+									'title': h2name}
 #	response['4'] = {
 	#	'headers':  ['Test'],
 	#	'number_cols': 1,
@@ -129,7 +129,7 @@ def run(runner, LOCAL_DATA, mydb=None):
 def saverunner(data, runnerid, mydb):
 	print('start save to db')
 	with mydb:
-		print('** Saving %s into reference' % (runnerid,))
+		print('** Saving {} into reference'.format(runnerid))
 		store_data = json.dumps(data)
 		mydb.cur.execute('delete from reference where key=? and subkey=?',
 										 ('runner', runnerid))
