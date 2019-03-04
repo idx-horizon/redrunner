@@ -237,7 +237,7 @@ def count_by(runner, type='course'):
 	return dict(ct)
 		
 if __name__ == '__main__':
-
+	SECRET_KEY = 'How does your garden grow during the car journey'
 	THISDB = 'REPOSITORY.db'
 	LOCAL_DATA = os.path.join(os.environ['HOME'] )
 
