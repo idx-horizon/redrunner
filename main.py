@@ -25,10 +25,6 @@ import src.parkrun as PARK
 import src.parkcharts as parkcharts
 from src.db import DBO 
 
-app = Flask(__name__)
-app.config.from_object(Config)
-
-login = LoginManager(app)
 
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
@@ -242,7 +238,7 @@ def count_by(runner, type='course'):
 		
 if __name__ == '__main__':
 
-	THISDB = app.config['REPOSITORY']   #''REPOSITORY.db'
+
 	LOCAL_DATA = os.path.join(os.environ['HOME'] )
 
 	public_flag = os.environ['RR_PUBLIC_FLAG']

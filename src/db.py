@@ -57,9 +57,6 @@ class DBO:
 				
 		con.commit()
 
-#		con.execute('CREATE TABLE elevation (id INTEGER PRIMARY KEY, pos INTEGER, run CHAR(100), elevation integer)')
-#		con.commit()
-				
 		con.execute('CREATE TABLE reference (key CHAR(20), subkey CHAR(20), value BLOB, modified_date CHAR(30))')
 		con.commit()
 					
