@@ -15,7 +15,7 @@ from flask import Flask, jsonify, abort, make_response, render_template, redirec
 from flask_login import login_user, logout_user, current_user, login_required
 from flask_login import LoginManager
 
-from src import app
+from src import app, THIS_DB
 
 from src.forms import LoginForm
 from src.config import Config
