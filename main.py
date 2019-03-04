@@ -73,6 +73,7 @@ def home(name=None):
 @app.route('/parkrun/<id>/year', methods=['POST','GET'])
 @app.route('/parkrun/<id>/month', methods=['POST','GET'])
 @app.route('/parkrun/<id>/missing', methods=['POST','GET'])
+@login_required
 def parkrun(id=None):
 	print('**', request.path, request.path.split('/')[-1])		
 
@@ -112,7 +113,6 @@ def parkrun(id=None):
 								runners = runners)
 
 @app.route('/runner/')
-@login_required
 def runner(id=None):
 	print('**', request.path)
 	with mydb:
