@@ -28,7 +28,7 @@ def getpostcode(course,app):
 def get_external_elevations(app):
     url = 'https://jegmar.com/stats-hq/fastest-races/parkrun'
     print('** Getting external data')
-    html = urlopen(url,app)
+    html = urlopen(url)
 
     soup = BeautifulSoup(html, 'html5lib')
 
@@ -44,7 +44,7 @@ def get_external_elevations(app):
         elements = line[1:].split(',')
 
         url = 'http://www.parkrun.org.uk/' + elements[1].lower().replace(' ', '') + '/course/'
-        url_status = check_url_status(url)
+        url_status = check_url_status(url, app)
         print(url_status, url)
         runs.append({'id': id,
                      'pos': elements[0],
