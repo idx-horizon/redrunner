@@ -21,8 +21,8 @@
 				<tr>
 					<td>{{ item.Event }}</td>
 					<td align="center">{{ item['Run Date'] | datetimefilter('%d-%b-%Y') }}</td>
-					<td align="center">{{ '%4d' % item['Run Number'] }}</td>
-					<td align="center">{{ '%4d' % item['Pos'] }}</td>
+					<td align="center">{{ '%4s' % item['Run Number'] }}</td>
+					<td align="center">{{ '%4s' % item['Pos'] }}</td>
 						<td align="center" 
 							{% if item['Time'] < threshold %} 
 								id="hilite"
