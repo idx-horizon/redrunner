@@ -24,7 +24,7 @@ import src.parkcharts as parkcharts
 from src.db import DBO 
 
 app = Flask(__name__)
-
+app.config['SECRET_KEY'] = 'How does your?garden grow today in the car?'
 
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
