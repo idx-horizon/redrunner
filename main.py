@@ -127,10 +127,9 @@ def runner(id=None):
 #@app.route('/ele/<run>')
 def elevation(run=None):
 	if request.method.upper() == 'POST':
-#		run = request.form['filter']
-		data = get_elevations(request.form['filter'])
+		data = get_elevations(mydb, request.form['filter'])
 	else:
-		data = get_elevations(None)
+		data = get_elevations(mydb, None)
 
 	return render_template('elevation.html', data=data, count=len(data), runners=runners)
 

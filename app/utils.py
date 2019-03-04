@@ -58,7 +58,7 @@ def get_external_elevations(app):
     return runs[1:]
 
 
-def get_elevations(filter=None):
+def get_elevations(mydb, filter=None):
     with mydb:
         data = json.loads(mydb.dcur.execute('select * from reference where key=\'elevations\'').fetchall()[0]['value'])
         if filter:
