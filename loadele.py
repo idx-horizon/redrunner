@@ -4,11 +4,13 @@ from app.db import DBO
 import datetime
 import json
 from app import app, THISDB
+from app.config import Config
 
 app = Flask(__name__, template_folder='../templates')
 
 app.config.from_object(Config)
-print(app)
+print(app.config)
+
 mydb = DBO(THISDB)
 
 with mydb:
