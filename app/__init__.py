@@ -9,4 +9,4 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 THISDB = app.config['REPOSITORY']
-APPNAME = app.config['RR_NAME']
+APPNAME = app.config['APPNAME']
