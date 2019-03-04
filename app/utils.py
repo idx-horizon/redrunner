@@ -3,6 +3,7 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 import httplib2
 import re
+import json
 
 def check_url_status(url,app):
     headers = {
