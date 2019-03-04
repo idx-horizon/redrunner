@@ -16,6 +16,7 @@ import httplib2
 
 from flask import Flask, jsonify, abort, make_response, render_template, redirect, request
 from flask_login import login_user, logout_user, current_user, login_required
+from flask_login import LoginManager
 
 from src.forms import LoginForm
 from src.config import Config
@@ -26,6 +27,8 @@ from src.db import DBO
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+login = LoginManager(app)
 
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
@@ -48,7 +51,6 @@ def error_404(error):
 @app.errorhandler(500)
 def handle_error_route(error):
 	return redirect('/error/')
-#	return make_response(jsonify({'error': '500 - Internal application error'}), 500)
 
 @app.route('/error/')
 def error():
@@ -117,6 +119,7 @@ def parkrun(id=None):
 								runners = runners)
 
 @app.route('/runner/')
+@login_required
 def runner(id=None):
 	print('**', request.path)
 	with mydb:
