@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import httplib2
 import re
 
-def check_url_status(url):
+def check_url_status(url,app):
     headers = {
         'User-Agent': app.config['USER_AGENT']
     }
@@ -13,7 +13,7 @@ def check_url_status(url):
     return resp[0]['status']
 
 
-def getpostcode(course):
+def getpostcode(course,app):
     url = 'http://www.parkrun.org.uk/' + course + '/course/'
     headers = {
         'User-Agent': app.config['USER_AGENT']
@@ -25,10 +25,10 @@ def getpostcode(course):
     return (course, len(pcs), pcs, soup)
 
 
-def get_external_elevations():
+def get_external_elevations(app):
     url = 'https://jegmar.com/stats-hq/fastest-races/parkrun'
     print('** Getting external data')
-    html = urlopen(url)
+    html = urlopen(url,app)
 
     soup = BeautifulSoup(html, 'html5lib')
 
