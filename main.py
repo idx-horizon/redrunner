@@ -11,7 +11,7 @@ from flask import Flask, jsonify, abort, make_response, render_template, redirec
 from flask_login import login_user, logout_user, current_user, login_required
 #from flask_login import LoginManager
 
-from app import app, THISDB
+from app import app, THISDB, APPNAME
 
 from app.utils import get_elevations #, get_external_elevations, getpostcode, check_url_status, save_elevations
 from app.forms import LoginForm
