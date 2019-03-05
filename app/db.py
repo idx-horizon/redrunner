@@ -58,7 +58,9 @@ class DBO:
 				
 		con.commit()
 		
-		con.execute('CREATE TABLE user (id integer PRIMARY KEY, username char(50) not null, 		con.commit()
+		con.execute('CREATE TABLE user (id integer PRIMARY KEY, username char(50) not null, email char(120), password_hash char(128))')
+		 		
+		con.commit()
 		for thisuser in {'ian','matt','test'}:
 			u = User(username=thisuser,email='tbc')
 			flaskdb.session.add(u)
