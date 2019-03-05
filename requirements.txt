@@ -21,6 +21,8 @@ ui
 #time
 html5lib
 flask_login
+flask-sqlalchemy
+flask_migrate
 flask_wtf
 wtforms
 werkzeug

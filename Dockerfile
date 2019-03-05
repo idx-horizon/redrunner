@@ -19,7 +19,7 @@ EXPOSE 5000
 EXPOSE 80
 
 # Define environment variable
-ENV RR_NAME "Red Runner"
+ENV RR_NAME "RED RUNNER"
 ENV RR_PUBLIC_FLAG "1"
 ENV RR_PORT 8888
 
