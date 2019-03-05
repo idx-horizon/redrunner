@@ -1,6 +1,7 @@
 import os
 import sqlite3
 from app.models import User
+from app import flaskdb
 class DBO:
 
 	def __init__(self, dbname):
