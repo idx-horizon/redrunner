@@ -6,10 +6,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(UserMixin, flaskdb.Model):
-    id = flaskdb.Column(db.Integer, primary_key=True)
-    username = flaskdb.Column(db.String(64), index=True, unique=True)
-    email = flaskdb.Column(db.String(120), index=True, unique=True)
-    password_hash = flaskdb.Column(db.String(128))
+    id = flaskdb.Column(flaskdb.Integer, primary_key=True)
+    username = flaskdb.Column(flaskdb.String(64), index=True, unique=True)
+    email = flaskdb.Column(flaskdb.String(120), index=True, unique=True)
+    password_hash = flaskdb.Column(flaskdb.String(128))
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
