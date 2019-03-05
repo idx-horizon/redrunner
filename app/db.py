@@ -56,7 +56,12 @@ class DBO:
 		con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'3158074\', 0, \'Sam\', \'30:00\')')		
 				
 		con.commit()
-
+		
+		con.execute('CREATE TABLE user (username char(50) not null, email char(120), password_hash char(128)')
+		con.execute('INSERT INTO user (usernname, email, password_hash) VALUES (\'Ian\',\'TBC\',\' \')'
+		con.execute('INSERT INTO user (usernname, email, password_hash) VALUES (\'Test\',\'TBC\',\' \')'
+		con.commit()
+		
 		con.execute('CREATE TABLE reference (key CHAR(20), subkey CHAR(20), value BLOB, modified_date CHAR(30))')
 		con.commit()
 					
