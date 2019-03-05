@@ -62,8 +62,8 @@ class DBO:
 		con.execute('INSERT INTO user (username, email, password_hash) VALUES (\'Test\',\'TBC\',\' \')')
 		con.commit()
 		u = User(username='M',email='tbc')
-		u.session.add(u)
-		u.session.commit()
+		flaskdb.session.add(u)
+		flaskdb.session.commit()
 		
 		print(User.query.all())
 		con.execute('CREATE TABLE reference (key CHAR(20), subkey CHAR(20), value BLOB, modified_date CHAR(30))')
