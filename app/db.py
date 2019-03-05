@@ -1,6 +1,6 @@
 import os
 import sqlite3
-
+from models import User
 class DBO:
 
 	def __init__(self, dbname):
@@ -61,7 +61,11 @@ class DBO:
 		con.execute('INSERT INTO user (username, email, password_hash) VALUES (\'Ian\',\'TBC\',\' \')')
 		con.execute('INSERT INTO user (username, email, password_hash) VALUES (\'Test\',\'TBC\',\' \')')
 		con.commit()
+		u = User(username='M',email='tbc')
+		u.session.add(u)
+		u.session.commit()
 		
+		print(User.query.all())
 		con.execute('CREATE TABLE reference (key CHAR(20), subkey CHAR(20), value BLOB, modified_date CHAR(30))')
 		con.commit()
 					
