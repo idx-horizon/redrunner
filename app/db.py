@@ -59,14 +59,17 @@ class DBO:
 		con.commit()
 		
 		con.execute('CREATE TABLE user (id integer PRIMARY KEY, username char(50) not null, email char(120), password_hash char(128))')
-		con.execute('INSERT INTO user (username, email, password_hash) VALUES (\'Ian\',\'TBC\',\' \')')
-		con.execute('INSERT INTO user (username, email, password_hash) VALUES (\'Test\',\'TBC\',\' \')')
+#		con.execute('INSERT INTO user (username, email, password_hash) VALUES (\'Ian\',\'TBC\',\' \')')
+#		con.execute('INSERT INTO user (username, email, password_hash) VALUES (\'Test\',\'TBC\',\' \')')
 		con.commit()
-		u = User(username='M',email='tbc')
-		flaskdb.session.add(u)
+		for thisuser in {'ian','matt','test'}:
+			u = User(username=thisuser,email='tbc')
+			flaskdb.session.add(u)
+			
 		flaskdb.session.commit()
 		
-		print(User.query.all())
+		print('** Users: ', User.query.all())
+
 		con.execute('CREATE TABLE reference (key CHAR(20), subkey CHAR(20), value BLOB, modified_date CHAR(30))')
 		con.commit()
 					
