@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from models import User
+from app.models import User
 class DBO:
 
 	def __init__(self, dbname):
