@@ -1,6 +1,7 @@
 import os
 import sqlite3
 from app.models import User
+from app.models import Runner
 from app import flaskdb
 class DBO:
 
@@ -58,7 +59,21 @@ class DBO:
 				
 		con.commit()
 		
-		con.execute('CREATE TABLE user (id integer PRIMARY KEY, username char(50) not null, email char(120), password_hash char(128))')
+		r = Runner(rid='1001',fullname='Unknown', threshold='20:00', public_flag=0)
+		flaskdb.session.add(r)
+		flaskdb.session.commit()
+		
+#		con.execute('CREATE TABLE user (id integer PRIMARY KEY, username char(50) not null, email char(120), password_hash char(128))')
+
+		con.execute('''
+			CREATE TABLE user (
+					id integer PRIMARY KEY, 
+					username char(50) not null, 
+					email char(120), 
+					password_hash char(128)
+				)
+				'''
+				)
 		 		
 		con.commit()
 		for thisuser in {'ian','matt','test'}:
