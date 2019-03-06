@@ -115,7 +115,12 @@ def parkrun(id=None):
 def runner(id=None):
 	print('**', request.path)
 	with mydb:
-			pgdata = mydb.dcur.execute('select * from runner where public_flag = ' + str(public_flag) + ' order by rid').fetchall()
+			pgdata = mydb.dcur.execute('''
+					select * from runner 
+					where 
+						public_flag = ' + str(public_flag) + ' order by rid
+					''').
+					fetchall()
 			pgtitle = 'All Runners'
 			
 	return render_template('runner.html',
@@ -133,7 +138,11 @@ def elevation(run=None):
 	else:
 		data = get_elevations(mydb, None)
 
-	return render_template('elevation.html', appname=APPNAME, data=data, count=len(data), runners=runners)
+	return render_template('elevation.html', 
+							appname=APPNAME, 
+							data=data, 
+							count=len(data), 
+							runners=runners)
 
 
 def runapp(port,debug=True):
@@ -191,7 +200,7 @@ if __name__ == '__main__':
 			rdtotals[runner['rid']][total_type] = count_by(rd[runner['rid']], total_type)
 			#for t in sorted(rdtotals[runner['rid']][total_type],reverse=True):
 			#	print(t, rdtotals[runner['rid']][total_type][t])
-		print('***', {l for l in string.ascii_uppercase if l not in az_done.keys()})
+#		print('***', {l for l in string.ascii_uppercase if l not in az_done.keys()})
 		rdtotals[runner['rid']]['missing'] = {'\n'.join(missing): len(missing)}
 
 	chart_data = {'Ian':  rdtotals['184594']['year'],
