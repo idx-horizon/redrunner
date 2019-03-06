@@ -90,6 +90,7 @@ class DBO:
 		con.commit()
 		for thisuser in {'ian','matt','test'}:
 			u = User(username=thisuser,email='tbc')
+			u.set_password('Password')
 			flaskdb.session.add(u)
 			
 		flaskdb.session.commit()
