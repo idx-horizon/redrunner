@@ -7,8 +7,7 @@ import json
 import time
 import datetime
 import app.db
-
-					
+import bs4					
 
 def extract_tables(html_text):
 	table_pattern = r'(<table[^>]*>(?:.|\n)*?<\/table>)' 
@@ -49,14 +48,6 @@ def extract_tables(html_text):
 									'data': data,
 									'caption': caption,
 									'title': h2name}
-#	response['4'] = {
-	#	'headers':  ['Test'],
-	#	'number_cols': 1,
-	#	'data_count': 1,
-	#	'data': ('Test,2'),
-	#	'caption': 'Blank',
-	#	'title': 'title'
-	#}
 	return response
 
 def get_chunk_as_tuples(datalist, n):
@@ -71,45 +62,43 @@ def run(runner, LOCAL_DATA, mydb=None):
 		with open(runner_datafile,'r') as fh:
 			b = json.load(fh)
 		return b, b['1']['title'].strip() +' (local)'
-		return b, b['1']['title'].strip() +' (local)', None
+#		return b, b['1']['title'].strip() +' (local)', None
 	else:
 		print('No local data for runner', runner, '- getting data from website')
 		
-	# console.clear()		
 	link ='http://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber=' + runner + '&eventNumber=0'
 
 	headers  =  {
 		'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
 		}	
 
-	print(link)
+#	print(link)
 
 	session = requests.Session()
 	session.headers.update(headers)
 	sr = session.get(link)
-	print('Response from get: ', sr.status_code, 'Length of response:', len(sr.text), '\n')		
-
+#	print('Response from get: ', sr.status_code, 'Length of response:', len(sr.text), '\n')			
 	b  = extract_tables(sr.text)
 	
 	for t in b:
 		cols = b[t]['number_cols']
 		rows = int(b[t]['data_count'] / cols)
-		max_width = len(max(b[t]['data'],key=len)) + 2
-		output_format = '{:<' + str(max_width) + '}'
-		
-		print('Table:', b[t]['caption'], b[t]['headers'], 'Columns:', cols, 'Rows:', rows)
-		line = ''
-		for h in b[t]['headers']:
-			line += output_format.format(h)
-		print(line)
-		
-		for i in range(0,rows):			
-			line = ''		
-			for d in b[t]['data'][cols*i : (cols*i)+cols]: 
-				line += output_format.format(d)
-			#print(b[t]['data'][cols*i : (cols*i)+cols])
-			#print(line)
-		print('\n')
+#		max_width = len(max(b[t]['data'],key=len)) + 2
+#		output_format = '{:<' + str(max_width) + '}'
+#		
+#		print('Table:', b[t]['caption'], b[t]['headers'], 'Columns:', cols, 'Rows:', rows)
+#		line = ''
+#		for h in b[t]['headers']:
+#			line += output_format.format(h)
+#		print(line)
+#		
+#		for i in range(0,rows):			
+#			line = ''		
+#			for d in b[t]['data'][cols*i : (cols*i)+cols]: 
+#				line += output_format.format(d)
+#			#print(b[t]['data'][cols*i : (cols*i)+cols])
+#			#print(line)
+#		print('\n')
 	
 		b[t]['rowdata'] =[]
 		for i in get_chunk_as_tuples(b[t]['data'],b[t]['number_cols']):
@@ -117,17 +106,13 @@ def run(runner, LOCAL_DATA, mydb=None):
 	
 	with open(os.path.join(LOCAL_DATA, runner + '.txt'),'w') as fh:
 		json.dump(b, fh)
-		# console.show_activity('Saving: ' +  runner + ' data locally')
 		time.sleep(1)
-		# console.hide_activity()
 		saverunner(b, runner, mydb)
 		
-	#return b,sr
-	#return b, b['1']['title'],sr
 	return b,b['1']['title']
 
 def saverunner(data, runnerid, mydb):
-	print('start save to db')
+#	print('start save to db')
 	with mydb:
 		print('** Saving {} into reference'.format(runnerid))
 		store_data = json.dumps(data)
@@ -152,9 +137,7 @@ if __name__ == '__main__':
 	print(LOCAL_DATA)
 	data, title, sr = run(runners[current_runner], LOCAL_DATA)
 	data, title,sr = run(runners[current_runner], LOCAL_DATA)
-	import bs4
-	
-	
+		
 	if data:
 		MyVw(data, title)
 		pass

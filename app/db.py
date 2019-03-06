@@ -54,9 +54,9 @@ class DBO:
 					public_flag bool, 
 					fullname char(50) NOT NULL, 
 					threshold char(10)
-				)
-				'''
-				)
+					)
+			'''
+		)
 	
 		con.commit()
 		
@@ -83,9 +83,9 @@ class DBO:
 					username char(50) not null, 
 					email char(120), 
 					password_hash char(128)
-				)
-				'''
-				)
+					)
+			'''
+		)
 		 		
 		con.commit()
 		for thisuser in {'ian','matt','test'}:
@@ -96,7 +96,15 @@ class DBO:
 		
 		print('** Users: ', User.query.all())
 
-		con.execute('CREATE TABLE reference (key CHAR(20), subkey CHAR(20), value BLOB, modified_date CHAR(30))')
+		con.execute('''
+			CREATE TABLE reference (
+					key CHAR(20),
+					subkey CHAR(20),
+					value BLOB,
+					modified_date CHAR(30)
+					)
+			'''
+		)
 		con.commit()
 					
 		print('** Created DB:', self.dbname)
