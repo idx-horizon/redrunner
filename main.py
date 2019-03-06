@@ -21,6 +21,7 @@ import app.parkrun as PARK
 import app.parkcharts as parkcharts
 from app.db import DBO
 
+from app.models import User
 
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
