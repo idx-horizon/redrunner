@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class Runner(flaskdb.Model):
-    rid = flaskdb.Column(flaskdb.String(10), index=True, unique=True)
+    rid = flaskdb.Column(flaskdb.String(10), index=True, unique=True, primary_key=True)
     fullname = flaskdb.Column(flaskdb.String(50))
     threshold = flaskdb.Column(flaskdb.String(10))
     public_flag = flaskdb.Column(flaskdb.Boolean)
