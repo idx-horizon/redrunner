@@ -115,12 +115,8 @@ def parkrun(id=None):
 def runner(id=None):
 	print('**', request.path)
 	with mydb:
-			pgdata = mydb.dcur.execute('''
-					select * from runner 
-					where 
-						public_flag = ' + str(public_flag) + ' order by rid
-					''').
-					fetchall()
+			pgdata = mydb.dcur.execute('select * from runner where public_flag = ' + 
+					str(public_flag) + 'order by rid').fetchall()
 			pgtitle = 'All Runners'
 			
 	return render_template('runner.html',
