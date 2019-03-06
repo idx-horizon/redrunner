@@ -1,8 +1,8 @@
 import os
 import sqlite3
-from app.models import User
-from app.models import Runner
+from app.models import User, Runner, Apple
 from app import flaskdb
+
 class DBO:
 
 	def __init__(self, dbname):
@@ -46,18 +46,18 @@ class DBO:
 		
 	def createdb(self):
 	
-		con = sqlite3.connect(self.dbname) # Warning: This file is created in the current directory
-
+		con = sqlite3.connect(self.dbname)
 		
-		con.execute('CREATE TABLE runner (rid char(10) not null, public_flag bool, fullname char(50) NOT NULL, threshold char(10))')
-		
-		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'184594\',1, \'Ian\', \'32:00\')')
-		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'185368\', 1, \'Matt\', \'25:00\')')
-		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'4327482\', 0, \'Caroline\', \'34:00\')')
-		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'2564629\', 0, \'Michael\', \'25:00\')')		
-		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'23656\', 0, \'Eileen\',\'34:00\')')
-		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'3158074\', 0, \'Sam\', \'30:00\')')		
-				
+		con.execute('''
+			CREATE TABLE runner (
+					rid char(10) not null, 
+					public_flag bool, 
+					fullname char(50) NOT NULL, 
+					threshold char(10)
+				)
+				'''
+				)
+	
 		con.commit()
 		
 		for thisrunner in {
@@ -77,8 +77,6 @@ class DBO:
 			flaskdb.session.add(r)
 		flaskdb.session.commit()
 		
-#		con.execute('CREATE TABLE user (id integer PRIMARY KEY, username char(50) not null, email char(120), password_hash char(128))')
-
 		con.execute('''
 			CREATE TABLE user (
 					id integer PRIMARY KEY, 
