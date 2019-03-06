@@ -7,7 +7,7 @@ import string
 from collections import Counter
 
 
-from flask import Flask, jsonify, abort, make_response, render_template, redirect, request
+from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request
 from flask_login import login_user, logout_user, current_user, login_required
 #from flask_login import LoginManager
 
@@ -55,7 +55,7 @@ def index():
 @app.route('/login/', methods=['POST','GET'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -63,7 +63,7 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/logout')
