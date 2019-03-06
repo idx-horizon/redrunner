@@ -6,11 +6,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class Runner(flaskdb.Model):
     rid = flaskdb.Column(flaskdb.String(10), index=True, unique=True, primary_key=True)
+    public_flag = flaskdb.Column(flaskdb.Boolean)
     fullname = flaskdb.Column(flaskdb.String(50))
     threshold = flaskdb.Column(flaskdb.String(10))
-    public_flag = flaskdb.Column(flaskdb.Boolean)
     
-    def __rep__(self):
+    def __repr__(self):
         return '<Runner {} {}'.format(self.rid, self.fullname) 
     
 class User(UserMixin, flaskdb.Model):

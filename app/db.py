@@ -50,17 +50,31 @@ class DBO:
 
 		
 		con.execute('CREATE TABLE runner (rid char(10) not null, public_flag bool, fullname char(50) NOT NULL, threshold char(10))')
-		con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'184594\',1, \'Ian\', \'32:00\')')
-		con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'185368\', 1, \'Matt\', \'25:00\')')
-		con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'4327482\', 0, \'Caroline\', \'34:00\')')
-		con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'2564629\', 0, \'Michael\', \'25:00\')')		
-		con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'23656\', 0, \'Eileen\',\'34:00\')')
-		con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'3158074\', 0, \'Sam\', \'30:00\')')		
+		
+		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'184594\',1, \'Ian\', \'32:00\')')
+		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'185368\', 1, \'Matt\', \'25:00\')')
+		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'4327482\', 0, \'Caroline\', \'34:00\')')
+		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'2564629\', 0, \'Michael\', \'25:00\')')		
+		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'23656\', 0, \'Eileen\',\'34:00\')')
+		#con.execute('INSERT INTO runner (rid, public_flag, fullname, threshold) VALUES (\'3158074\', 0, \'Sam\', \'30:00\')')		
 				
 		con.commit()
 		
-		r = Runner(rid='1001',fullname='Unknown', threshold='20:00', public_flag=0)
-		flaskdb.session.add(r)
+		for thisrunner in {
+			('184594',  'xIan',      '32:00', 1),
+			('185368',  'xMatt',     '25:00', 1),
+			('4327482', 'xCaroline', '34:00', 0),
+			('2564629', 'xMichael',  '25:00', 0),
+			('23656',   'xEileen',   '34:00', 0),
+			('3158074', 'xSam',      '30:00', 0),
+			
+		}:
+			r = Runner(rid=thisrunner[0],
+						fullname=thisrunner[1], 
+						threshold=thisrunner[2], 
+						public_flag=thisrunner[3]
+						)
+			flaskdb.session.add(r)
 		flaskdb.session.commit()
 		
 #		con.execute('CREATE TABLE user (id integer PRIMARY KEY, username char(50) not null, email char(120), password_hash char(128))')
