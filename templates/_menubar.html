@@ -1,10 +1,10 @@
 <div class="topnav">
-	<a> {{ appname }} {{ current_user.username }}</a>
+	<a>{{ appname }} {{ current_user.username }}</a>
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
 
 	<a href="/runner" {% if url_for(request.endpoint) == '/runner/' %}class="active"{% endif %}>Runner</a>	
 
-	<div class="dropdown">
+	<div class="dropdown" {% if url_for(request.endpoint).startswith('/parkrun/') %}" active"{% endif %>
 			<button class="dropbtn" {% if url_for(request.endpoint).startswith('/parkrun/') %}"class=active"{% endif %}>Parkrun
 					<i class="fa fa-caret-down"></i>
 			</button>
