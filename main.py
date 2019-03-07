@@ -12,6 +12,8 @@ from flask import Flask, jsonify, abort, flash, make_response, render_template, 
 from flask_login import login_user, logout_user, current_user, login_required
 #from flask_login import LoginManager
 
+from werkzeug.urls import url_parse
+
 from app import app, THISDB, APPNAME
 
 from app.utils import get_elevations #, get_external_elevations, getpostcode, check_url_status, save_elevations
