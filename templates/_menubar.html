@@ -1,5 +1,5 @@
 <div class="topnav">
-	<a> {{ appname }}</a>
+	<a> {{ appname }} {{ current_user.username }}</a>
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
 
 	<a href="/runner" {% if url_for(request.endpoint) == '/runner/' %}class="active"{% endif %}>Runner</a>	
