@@ -4,7 +4,7 @@
 
 	<a href="/runner" {% if url_for(request.endpoint) == '/runner/' %}class="active"{% endif %}>Runner</a>	
 
-	<div class="dropdown" {% if url_for(request.endpoint).startswith('/parkrun/') %}" active"{% endif %>
+	<div class="dropdown" {% if url_for(request.endpoint).startswith('/parkrun/') %} active {% endif %>
 			<button class="dropbtn" {% if url_for(request.endpoint).startswith('/parkrun/') %}"class=active"{% endif %}>Parkrun
 					<i class="fa fa-caret-down"></i>
 			</button>
