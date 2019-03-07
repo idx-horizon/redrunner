@@ -1,7 +1,6 @@
 <div class="topnav">
-	<a>{{ appname }} {{ current_user.username }}</a>
+	<a>{{ current_user.username|title}}</a>
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
-
 	<a href="/runner" {% if url_for(request.endpoint) == '/runner/' %}class="active"{% endif %}>Runner</a>	
 
 	<div class="dropdown" {% if url_for(request.endpoint).startswith('/parkrun/') %} active {% endif %}>
