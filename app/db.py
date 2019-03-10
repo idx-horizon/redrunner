@@ -75,12 +75,14 @@ class DBO:
 						public_flag=thisrunner[3]
 						)
 			flaskdb.session.add(r)
+
 		flaskdb.session.commit()
 		
 		con.execute('''
 			CREATE TABLE user (
 					id integer PRIMARY KEY, 
-					username char(50) not null, 
+					username char(50) not null,
+					rid char(10), 
 					email char(120), 
 					password_hash char(128)
 					)
@@ -88,9 +90,14 @@ class DBO:
 		)
 		 		
 		con.commit()
-		for thisuser in {'ian','matt','test'}:
-			u = User(username=thisuser,email='tbc')
-			u.set_password('Password')
+		for thisuser in {
+			('ian', '184594'),
+			('caroline', '4327482'),
+			('matt', '185368'),
+			('test')
+		}:
+			u = User(username=thisuser[0], rid=thisuser[1], email='tbc')
+			u.set_password('P')
 			flaskdb.session.add(u)
 			
 		flaskdb.session.commit()
