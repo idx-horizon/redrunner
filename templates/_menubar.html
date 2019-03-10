@@ -1,5 +1,5 @@
 <div class="topnav">
-	{% if current_user %}
+	{% if current_user.is_authenticated %}
 		<a>{{ current_user.username|title}}</a>
 	{% endif %}
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
