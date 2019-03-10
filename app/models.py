@@ -21,6 +21,7 @@ class Runner(flaskdb.Model):
 class User(UserMixin, flaskdb.Model):
     id            = flaskdb.Column(flaskdb.Integer, primary_key=True)
     username      = flaskdb.Column(flaskdb.String(64), index=True, unique=True)
+    rid           = flaskdb.Column(flaskdb.String(10), index=True, unique=True)
     email         = flaskdb.Column(flaskdb.String(120), index=True, unique=True)
     password_hash = flaskdb.Column(flaskdb.String(128))
 
