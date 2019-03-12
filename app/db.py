@@ -84,20 +84,25 @@ class DBO:
 					username char(50) not null,
 					rid char(10), 
 					email char(120), 
-					password_hash char(128)
+					password_hash char(128),
+					home_run char(50)
 					)
 			'''
 		)
 		 		
 		con.commit()
 		for thisuser in {
-			('ian', '184594'),
-			('caroline', '4327482'),
-			('matt', '185368'),
+			('ian', '184594', 'bromley'),
+			('caroline', '4327482', 'banstead'),
+			('matt', '185368', 'bromley'),
 			('test')
 		}:
-			u = User(username=thisuser[0], rid=thisuser[1], email='tbc')
-			u.set_password('P')
+			u = User(username=thisuser[0], 
+						rid=thisuser[1], 
+						email='tbc',\
+						home_run=thisuser[2])
+						
+			u.set_password('p')
 			flaskdb.session.add(u)
 			
 		flaskdb.session.commit()
