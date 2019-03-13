@@ -28,9 +28,10 @@ from app.models import User
 
 @app.context_processor
 def utility_processor():
-    def home_run():
-    	return HOME_RUN or 'home_run_string'
-    return dict(home_run=home_run)
+  #  def home_run():
+  #  	return HOME_RUN or 'home_run_string'
+    	
+	return dict(home_run='default')
     
 #app.jinja_env.globals.update(user_details=home_run)
 
