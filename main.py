@@ -26,6 +26,8 @@ from app.db import DBO
 
 from app.models import User
 
+app.jinja_env.globals.update(user_details=home_run)
+
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
 
@@ -189,7 +191,7 @@ def count_by(runner, type='course'):
 	return dict(ct)
 
 def home_run():
-	return HOME_RUN
+	return HOME_RUN or 'home_run_string'
 		
 if __name__ == '__main__':
 
