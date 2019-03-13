@@ -29,7 +29,10 @@ from app.models import User
 @app.context_processor
 def utility_processor():
 	def hr():
-		return HOME_RUN + current_user.username 
+		if current_user:
+			return HOME_RUN + current_user.username
+		else:
+			return 'not logged in'
 	return dict(home_run=hr)
     
 #app.jinja_env.globals.update(user_details=home_run)
