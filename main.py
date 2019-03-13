@@ -66,7 +66,7 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
 
-	HOME_RUN = None
+    HOME_RUN = None
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
