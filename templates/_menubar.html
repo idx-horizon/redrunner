@@ -1,3 +1,7 @@
+	{% if current_user.is_authenticated %}
+		<div class="topnav">Home run: [{{ home_run() }}] </div>
+	{% endif %}
+
 <div class="topnav">
 	{% if current_user.is_authenticated %}
 		<a>{{ current_user.username|title}}</a>
@@ -22,6 +26,4 @@
 	{% else %}
 	<a style=float:right href="/logout" {% if url_for(request.endpoint) == '/logout/' %}class="active"{% endif %}>Logout</a>	
 	{% endif %}
-	</div>
-	<div>{{ appname }} Home run: [{{ home_run() }}] -{{ env_home_run }}- 
 	</div>
