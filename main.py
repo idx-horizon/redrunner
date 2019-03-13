@@ -75,9 +75,9 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
         HOME_RUN = 'logged in home run'
         print('user logged in event', user)
+        login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('home')
@@ -88,6 +88,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
+    HOME_RUN = None
     return redirect(url_for('home'))
 
 @app.route('/home/')
@@ -130,7 +131,7 @@ def parkrun(id=None):
 		parent_route = request.path.replace('/'+page, '')
 		
 		return render_template('totals.html',
-							    appname=APPNAME,
+							    appname=APPNAME, env_home_run=HOME_RUN,
 								title = rdtitle[runnerid],
 								data = rdtotals[runnerid][page],
 								datacount = '(' + str(len(rdtotals[runnerid][page])) + ')' if page != 'missing' else '',
@@ -140,7 +141,7 @@ def parkrun(id=None):
 								runnerid = runnerid)
 	else:
 		return render_template('parkrun.html',
-							    appname=APPNAME,
+							    appname=APPNAME, env_home_run=HOME_RUN,
 								data = pgdata,
 								runnerid = runnerid,
 								title = rdtitle[runnerid],
@@ -156,7 +157,7 @@ def runner(id=None):
 			pgtitle = 'All Runners'
 			
 	return render_template('runner.html',
-						    appname=APPNAME,
+						    appname=APPNAME, env_home_run=HOME_RUN,
 							data=pgdata,
 							title=pgtitle,
 							runners=runners,
@@ -171,7 +172,7 @@ def elevation(run=None):
 		data = get_elevations(mydb, None)
 
 	return render_template('elevation.html', 
-							appname=APPNAME, 
+							appname=APPNAME, env_home_run=HOME_RUN,
 							data=data, 
 							count=len(data), 
 							runners=runners)
@@ -241,7 +242,7 @@ if __name__ == '__main__':
 
 	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
 	
-	HOME_RUN = 'Default home run'
+	HOME_RUN = 'DEFAULT'
 					
 	port = int(os.environ.get("RR_PORT", 8000))
 
