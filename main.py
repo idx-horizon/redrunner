@@ -30,7 +30,7 @@ from app.models import User
 def utility_processor():
 	def hr():
 		if current_user.is_authenticated:
-			return HOME_RUN + current_user.username
+			return current_user.HOME_RUN
 		else:
 			return 'not logged in'
 	return dict(home_run=hr)
@@ -78,7 +78,7 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
-        HOME_RUN = 'logged in home run'
+        current.user.HOME_RUN = 'home run'
         print('user logged in event', user)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
