@@ -30,7 +30,7 @@ from app.models import User
 def utility_processor():
 	def hr():
 		if current_user.is_authenticated:
-			return current_user.HOME_RUN
+			return current_user.home_run
 		else:
 			return 'not logged in'
 	return dict(home_run=hr)
