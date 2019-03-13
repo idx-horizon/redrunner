@@ -27,11 +27,8 @@ from app.db import DBO
 from app.models import User
 
 @app.context_processor
-def utility_processor():
-  #  def home_run():
-  #  	return HOME_RUN or 'home_run_string'
-    	
-	return dict(home_run='default')
+def utility_processor():    	
+	return dict(home_run=HOME_RUN)
     
 #app.jinja_env.globals.update(user_details=home_run)
 
@@ -68,6 +65,8 @@ def index():
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
+
+	HOME_RUN = None
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -75,6 +74,8 @@ def login():
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
+        HOME_RUN = 'logged in home run'
+        print(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('home')
