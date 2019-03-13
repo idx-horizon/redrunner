@@ -30,7 +30,7 @@ from app.models import User
 def utility_processor():
 	def hr():
 		return HOME_RUN 	
-	return dict(home_run=hr())
+	return dict(home_run=hr)
     
 #app.jinja_env.globals.update(user_details=home_run)
 
