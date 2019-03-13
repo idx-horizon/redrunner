@@ -83,7 +83,7 @@ def login():
             next_page = url_for('home')
         return redirect(next_page)
 
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', title='Login', form=form)
 
 @app.route('/logout')
 def logout():
@@ -93,7 +93,7 @@ def logout():
 @app.route('/home/')
 @app.route('/home/<name>')
 def home(name=None):
-	return render_template('home.html', appname=APPNAME,
+	return render_template('home.html', appname=APPNAME, env_home_run=HOME_RUN,
 							name=name,
 							runners=runners,
 							timestamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
