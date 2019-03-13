@@ -87,8 +87,8 @@ def login():
 
 @app.route('/logout')
 def logout():
-    logout_user()
     HOME_RUN = None
+    logout_user()
     return redirect(url_for('home'))
 
 @app.route('/home/')
@@ -206,6 +206,7 @@ if __name__ == '__main__':
 
 
 	LOCAL_DATA = os.path.join(os.environ['HOME'] )
+	HOME_RUN = 'DEFAULT'
 
 	public_flag = os.environ['RR_PUBLIC_FLAG']
 	mydb = DBO(THISDB)
@@ -242,7 +243,6 @@ if __name__ == '__main__':
 
 	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
 	
-	HOME_RUN = 'DEFAULT'
 					
 	port = int(os.environ.get("RR_PORT", 8000))
 
