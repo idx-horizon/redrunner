@@ -37,11 +37,11 @@ class DBO:
 		self.conn.close()
 		
 	def __enter__(self):
-		print('** Using', self.dbname)
+		#print('** Using', self.dbname)
 		self.connectDB()
 		
 	def __exit__(self, *args):
-		print('** Closing', self.dbname)
+		#print('** Closing', self.dbname)
 		self.disconnect()
 		
 	def createdb(self):
