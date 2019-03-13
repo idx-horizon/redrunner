@@ -187,6 +187,9 @@ def count_by(runner, type='course'):
 			ct['Sub ' + str(int(e['Time'][:2])+1) + ' min'] += 1			
 				
 	return dict(ct)
+
+def home_run():
+	return HOME_RUN
 		
 if __name__ == '__main__':
 
@@ -227,6 +230,8 @@ if __name__ == '__main__':
 				  'Matt': rdtotals['185368']['year']}
 
 	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
+	
+	HOME_RUN = 'Default'
 					
 	port = int(os.environ.get("RR_PORT", 8000))
 
