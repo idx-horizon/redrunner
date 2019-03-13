@@ -27,8 +27,10 @@ from app.db import DBO
 from app.models import User
 
 @app.context_processor
-def utility_processor():    	
-	return dict(home_run=HOME_RUN)
+def utility_processor():
+	def hr():
+		return HOME_RUN 	
+	return dict(home_run=hr)
     
 #app.jinja_env.globals.update(user_details=home_run)
 
@@ -75,7 +77,7 @@ def login():
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         HOME_RUN = 'logged in home run'
-        print(user)
+        print('user logged in event', user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('home')
@@ -239,7 +241,7 @@ if __name__ == '__main__':
 
 	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
 	
-	HOME_RUN = 'Default'
+	HOME_RUN = 'Default home run'
 					
 	port = int(os.environ.get("RR_PORT", 8000))
 
