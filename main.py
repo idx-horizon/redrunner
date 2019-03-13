@@ -29,7 +29,7 @@ from app.models import User
 @app.context_processor
 def utility_processor():
 	def hr():
-		if current_user.is_authenicated:
+		if current_user.is_authenticated:
 			return HOME_RUN + current_user.username
 		else:
 			return 'not logged in'
