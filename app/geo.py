@@ -63,7 +63,7 @@ def closest_runs(run=None, postcode=None, top=10):
 	print('\nClosest {} runs from {} {}'.format(top, from_name, from_coord))
 	for m in tree.iter('e'):
 		p = m.get('m')
-		la, lo = get_coordinates(p)
+		la, lo = get_coordinates(p,root)
 		try:
 			dist[p] =  measure(from_loc=from_coord, to_loc=(float(la), float(lo)))
 		except:
