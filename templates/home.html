@@ -4,15 +4,15 @@
 <h1>Home</h1>
 
 <div>
-	<table id='table'>
+	<table width="50%" id='table'>
 		<tr>
 			<th width="35%" align="left">parkrun</th>
 			<th width="25%" align="center">Distance</th>
 		</tr>
 		{% for item in closest %}
 				<tr>
-					<td><a href="#">{{ item }}</a></td>
-					<td>tbd</td>
+					<td><a href="#">{{ item.name }}</a></td>
+					<td>{{ item.distance }} tbd</td>
 		{% endfor %}
 	</table>
 

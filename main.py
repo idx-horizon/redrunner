@@ -97,6 +97,7 @@ def logout():
 @app.route('/home/<name>')
 def home(name=None):
 	closest = geo.closest_runs('Bromley')
+	closest = {'Bromley': 4, 'Beckenham': 2}
 	return render_template('home.html', appname=APPNAME, env_home_run=HOME_RUN,
 							name=name,
 							runners=runners,
