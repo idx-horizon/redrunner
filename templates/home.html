@@ -3,8 +3,8 @@
 
 <h1>Home</h1>
 
-<div>
-	<table width="50%" id='table'>
+<div style='float:left'>
+	<table id='table'>
 		<tr>
 			<th width="30%" align="left">parkrun</th>
 			<th width="20%" align="center">Distance</th>
@@ -12,12 +12,12 @@
 		{% for item in closest %}
 				<tr>
 					<td><a href="#">{{ item.name }}</a></td>
-					<td>{{ item.distance }} tbd</td>
+					<td>{{ item.distance }}</td>
 		{% endfor %}
 	</table>
 
 </div>
-<div>
+<div style='float:left'>
 <img src="../static/mygraph.png?" + {{ timestamp }} alt="graph by year" width="40%">
 </div>
 
