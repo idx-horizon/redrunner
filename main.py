@@ -22,6 +22,7 @@ from app.forms import LoginForm
 
 import app.parkrun as PARK
 import app.parkcharts as parkcharts
+import app.geo as geo
 from app.db import DBO
 
 from app.models import User
@@ -35,8 +36,6 @@ def utility_processor():
 			return 'not logged in'
 	return dict(home_run=hr)
     
-#app.jinja_env.globals.update(user_details=home_run)
-
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):
 
@@ -97,9 +96,11 @@ def logout():
 @app.route('/home/')
 @app.route('/home/<name>')
 def home(name=None):
+	closest = geo.closest_runs('Bromley')
 	return render_template('home.html', appname=APPNAME, env_home_run=HOME_RUN,
 							name=name,
 							runners=runners,
+							closest=closest,
 							timestamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
 
 
