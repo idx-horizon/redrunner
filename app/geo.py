@@ -44,7 +44,7 @@ def measure(from_loc, to_loc):
 	return distance
 	
 def closest_runs(run=None, postcode=None, top=10):
-	tree = ET.parse('prlocs.xml')
+	tree = ET.parse('geo.xml')
 	root = tree.getroot()
 
 	dist = {}		
