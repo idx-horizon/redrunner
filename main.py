@@ -77,8 +77,6 @@ def login():
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
-        # current_user.HOME_RUN = 'home run'
-        # print('user logged in event', user)
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -89,14 +87,17 @@ def login():
 
 @app.route('/logout')
 def logout():
-    HOME_RUN = None
     logout_user()
     return redirect(url_for('home'))
 
 @app.route('/home/')
 @app.route('/home/<name>')
 def home(name=None):
-	closest = geo.closest_runs(current_user.home_run, top=20) if current_user else None
+	if current_user is not None:
+		closest = geo.closest_runs(current_user.home_run, top=20) 
+	else: 
+		closest = None
+		
 	return render_template('home.html', appname=APPNAME, env_home_run=HOME_RUN,
 							name=name,
 							runners=runners,
