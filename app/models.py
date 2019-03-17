@@ -25,6 +25,7 @@ class User(UserMixin, flaskdb.Model):
     email         = flaskdb.Column(flaskdb.String(120), index=True, unique=True)
     password_hash = flaskdb.Column(flaskdb.String(128))
     home_run      = flaskdb.Column(flaskdb.String(50))
+    home_postcode = flaskdb.Column(flaskdb.String(50))
 
     def __repr__(self):
         return '<User {} {}>'.format(self.username, self.email)

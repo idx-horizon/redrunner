@@ -62,7 +62,7 @@ class DBO:
 		
 		for thisrunner in {
 			('184594',  'Ian',      '32:00', 1),
-			('185368',  'Matt',     '25:00', 1),
+			('185368',  'Matt',     '25:00', 0),
 			('4327482', 'Caroline', '34:00', 0),
 			('2564629', 'Michael',  '25:00', 0),
 			('23656',   'Eileen',   '34:00', 0),
@@ -85,22 +85,24 @@ class DBO:
 					rid char(10), 
 					email char(120), 
 					password_hash char(128),
-					home_run char(50)
+					home_run char(50),
+					home_postcode char(50)
 					)
 			'''
 		)
 		 		
 		con.commit()
 		for thisuser in {
-			('ian', '184594', 'Bromley'),
-			('caroline', '4327482', 'Banstead Woods'),
-			('matt', '185368', 'Bromley'),
+			('ian', '184594', 'Bromley', 'BR4 9NZ'),
+			('caroline', '4327482', 'Banstead Woods', None),
+			('matt', '185368', 'Bromley', None),
 			('test')
 		}:
 			u = User(username=thisuser[0], 
 						rid=thisuser[1], 
 						email='tbc',\
-						home_run=thisuser[2])
+						home_run=thisuser[2]
+						home_postcode=thisuser[3])
 						
 			u.set_password('p')
 			flaskdb.session.add(u)
