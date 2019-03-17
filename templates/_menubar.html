@@ -23,7 +23,6 @@
 	{% endif %}
 </div>
 {% if current_user.is_authenticated %}
-	<div><a>Home run: {{ home_run() }} </a></div>
-	<a>{{ current_user.username|title}}</a>
+	<div><a>User: {{ current_user.username|title}} Home Run: {{ home_run() }} </a></div>
 {% endif %}
 
