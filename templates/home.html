@@ -3,24 +3,23 @@
 
 <h1>Home</h1>
 <div style="width:100%">
-<div style='float:left; width:50%;">
-	<table id='table'>
-		<tr>
-			<th width="70%" align="left">parkrun</th>
-			<th width="30%" align="center">Distance</th>
-		</tr>
-		{% for item in closest %}
-				<tr>
-					<td><a href="#">{{ item.name }}</a></td>
-					<td>{{ item.distance }}</td>
-		{% endfor %}
-	</table>
+	<div style="float:right; width:50%;">
+		<img src="../static/mygraph.png?" + {{ timestamp }} alt="graph by year" width="100%">
+	</div>
 
-</div>
-<div style="float:right; width:50%;">
-	<img src="../static/mygraph.png?" + {{ timestamp }} alt="graph by year" width="100%">
-</div>
-
+	<div style='float:left; width:50%;">
+		<table id='table'>
+			<tr>
+				<th width="70%" align="left">parkrun</th>
+				<th width="30%" align="center">Distance</th>
+			</tr>
+			{% for item in closest %}
+					<tr>
+						<td><a href="#">{{ item.name }}</a></td>
+						<td>{{ item.distance }} (m)</td>
+			{% endfor %}
+		</table>
+	</div>
 </div>
 
 <p>
