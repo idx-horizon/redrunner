@@ -34,13 +34,13 @@ def utility_processor():
 			return current_user.home_run
 		else:
 			return 'not logged in'
-	def hl():
+	def hpc():
 		if current_user.is_authenticated:
-			return current_user.home_location
+			return current_user.home_postcode
 		else:
 			return ''
 	
-	return dict(home_run=hr, home_location=hl)
+	return dict(home_run=hr, home_postcode=hpc)
     
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):

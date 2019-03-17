@@ -24,6 +24,6 @@
 </div>
 {% if current_user.is_authenticated %}
 	<div>User: {{ current_user.username|title}}</div>
-	<div>Home Run/Location: {{ home_run() }}/{{ home_location() }}</div>
+	<div>Home Run/Postcode: {{ home_run() }}/{{ home_postcode() }}</div>
 {% endif %}
 
