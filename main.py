@@ -96,7 +96,7 @@ def home(name=None):
 	if current_user.is_authenticated:
 		closest = geo.closest_runs(current_user.home_run, top=10) 
 	else: 
-		closest = None
+		closest = []
 		
 	return render_template('home.html', appname=APPNAME, env_home_run=HOME_RUN,
 							name=name,
