@@ -4,27 +4,27 @@
 <h1>Home</h1>
 {% if current_user.is_authenticated %}
 
-	<table style="width:50%;">
+	<table style="width:70%;">
 		<tr>
-			<th width="40%" align="left">Parkrun</th>
-			<th width="10%" align="right">Distance</th>
+			<th width="55%" align="left">Parkrun</th>
+			<th width="15%" align="right">Distance</th>
 		</tr>
 		{% for item in closest %}
 			<tr>
-				<td><a href="#">{{ item.name }}</a></td>
-				<td align="right">{{ item.distance }} (m)</td>
+				<td>{{ item.name }}</td>
+				<td align="right">{{ '0.2f' % item.distance }} (m)</td>
 			</tr>
 		{% endfor %}
 	</table>
 {% else %}
 	<P>
-	<b>You are not logged in - to view closest runs <a href = '/login'>login</a></b>
+	<b>You are not logged in, to view closest runs <a href = '/login'>login</a></b>
 	<P> 
 {% endif %}
 
 <p>
 
-	<img src="../static/mygraph.png?" + {{ timestamp }} alt="graph by year" width="50%">
+	<img src="../static/mygraph.png?" + {{ timestamp }} alt="graph by year" width="70%">
 
 <p>
 {% include "_footer.html" %}
