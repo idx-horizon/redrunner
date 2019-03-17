@@ -96,10 +96,11 @@ def logout():
 @app.route('/home/')
 @app.route('/home/<name>')
 def home(name=None):
-	closest = geo.closest_runs(HOME_RUN) if HOME_RUN else None
+	closest = geo.closest_runs(HOME_RUN, top=20) if HOME_RUN else None
 	#closest = [{'name': 'Bromley', 'distance': 4},
 	#			{'name': 'Beckenham', 'distance': 2}
 	#		  ]
+	print('Closest', type(closest), closest, HOME_RUN)
 	return render_template('home.html', appname=APPNAME, env_home_run=HOME_RUN,
 							name=name,
 							runners=runners,
