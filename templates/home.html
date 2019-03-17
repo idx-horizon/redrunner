@@ -6,13 +6,13 @@
 
 	<table style="width:70%;">
 		<tr>
-			<th width="55%" align="left">Parkrun</th>
-			<th width="15%" align="right">Distance</th>
+			<th width="55%" align="left">parkrun</th>
+			<th width="15%" align="right">miles</th>
 		</tr>
 		{% for item in closest %}
 			<tr>
 				<td>{{ item.name }}</td>
-				<td align="right">{{ "%0.2f" % item.distance|float }} (m)</td>
+				<td align="right">{{ "%0.2f" % item.distance|float }}</td>
 			</tr>
 		{% endfor %}
 	</table>

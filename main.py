@@ -100,7 +100,7 @@ def logout():
 @app.route('/home/<name>')
 def home(name=None):
 	if current_user.is_authenticated:
-		closest = geo.closest_runs(current_user.home_run, top=10) 
+		closest = geo.closest_runs(current_user.home_run, top=20) 
 	else: 
 		closest = []
 		
