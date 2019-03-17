@@ -100,8 +100,8 @@ class DBO:
 		}:
 			u = User(username=thisuser[0], 
 						rid=thisuser[1], 
-						email='tbc',\
-						home_run=thisuser[2]
+						email='tbc',
+						home_run=thisuser[2],
 						home_postcode=thisuser[3])
 						
 			u.set_password('p')
