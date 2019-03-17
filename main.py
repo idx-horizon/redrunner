@@ -34,7 +34,13 @@ def utility_processor():
 			return current_user.home_run
 		else:
 			return 'not logged in'
-	return dict(home_run=hr)
+	def hl():
+		if current_user.is_authenticated:
+			return current_user.home_location
+		else:
+			return ''
+	
+	return dict(home_run=hr, home_location=hl)
     
 @app.template_filter()
 def datetimefilter(value, format='%d-%b-%Y'):

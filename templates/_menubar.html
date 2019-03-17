@@ -23,6 +23,7 @@
 	{% endif %}
 </div>
 {% if current_user.is_authenticated %}
-	<div><a>User: {{ current_user.username|title}} Home Run: {{ home_run() }} </a></div>
+	<div>User: {{ current_user.username|title}}</div>
+	<div>Home Run/Location: {{ home_run() }}/{{ home_location() }}</div>
 {% endif %}
 
