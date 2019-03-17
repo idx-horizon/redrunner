@@ -2,7 +2,7 @@
 {% include "_menubar.html" %}
 
 <h1>Home</h1>
-	<table id='table' width="50%">
+	<table width="50%">
 		<tr>
 			<th width="70%" align="left">parkrun</th>
 			<th width="30%" align="center">Distance</th>
@@ -14,10 +14,9 @@
 			</tr>
 		{% endfor %}
 	</table>
+<p>
 
-	<div style="float:left; width:50%;">
-		<img src="../static/mygraph.png?" + {{ timestamp }} alt="graph by year" width="100%">
-	</div>
+	<img src="../static/mygraph.png?" + {{ timestamp }} alt="graph by year" width="50%">
 
 <p>
 {% include "_footer.html" %}
