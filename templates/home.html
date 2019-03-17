@@ -5,12 +5,12 @@
 	<table style="width:50%;">
 		<tr>
 			<th width="40%" align="left">Parkrun</th>
-			<th width="10%" align="left">Distance</th>
+			<th width="10%" align="right">Distance</th>
 		</tr>
 		{% for item in closest %}
 			<tr>
 				<td><a href="#">{{ item.name }}</a></td>
-				<td>{{ item.distance }} (m)</td>
+				<td align="right">{{ item.distance }} (m)</td>
 			</tr>
 		{% endfor %}
 	</table>
