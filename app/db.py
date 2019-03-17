@@ -92,9 +92,9 @@ class DBO:
 		 		
 		con.commit()
 		for thisuser in {
-			('ian', '184594', 'bromley'),
-			('caroline', '4327482', 'banstead'),
-			('matt', '185368', 'bromley'),
+			('ian', '184594', 'Bromley'),
+			('caroline', '4327482', 'Banstead Woods'),
+			('matt', '185368', 'Bromley'),
 			('test')
 		}:
 			u = User(username=thisuser[0], 
