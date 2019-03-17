@@ -39,7 +39,7 @@ def measure(from_loc, to_loc):
 	a = sin(dlat /2)**2 + cos(lat1) * cos(lat2) * sin(dlon /2)**2
 	c = 2 * atan2(sqrt(a), sqrt(1-a))
 	
-	distance = (EARTH_RADIUS * c) *5/8
+	distance = round((EARTH_RADIUS * c) *5/8,2)
 	
 	return distance
 	
