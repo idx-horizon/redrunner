@@ -17,12 +17,14 @@ function initMap() {
   // The location of Uluru
   var uluru = {lat: -25.344, lng: 131.036};
   var home = {{ map_centre }} 
+  var markers = {{ markers }}
+  
   // The map, centered at Uluru
   var map = new google.maps.Map(
       document.getElementById('map'), {zoom: 10, center: home });
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: home, map: map});
-  var marker = new google.maps.Marker({position: markers, map: map});
+  var marker1 = new google.maps.Marker({position: markers, map: map});
 
 }
     </script>
