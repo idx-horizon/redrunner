@@ -98,7 +98,8 @@ def logout():
 
 @app.route('/map')
 def gmap():
-	return render_template('map.html')
+	api_key = open.read('resources/gmap.key').read()[:-1]
+	return render_template('map.html', api_key=api_key)
 	
 @app.route('/home/')
 @app.route('/home/<name>')
