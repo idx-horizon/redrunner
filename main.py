@@ -96,6 +96,10 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+@app.route('/map')
+def gmap():
+	return render_template('map.html')
+	
 @app.route('/home/')
 @app.route('/home/<name>')
 def home(name=None):
