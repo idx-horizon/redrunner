@@ -2,19 +2,21 @@
 
 <div class="topnav">
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
-	<a href="/runner" {% if url_for(request.endpoint) == '/runner/' %}class="active"{% endif %}>Runner</a>	
-
+	<a href="/runner" {% if url_for(request.endpoint) == '/runner/' %}class="active"{% endif %}>Runner</a>
+		
+{#
 	<div class="dropdown" {% if url_for(request.endpoint).startswith('/parkrun/') %} active {% endif %}>
-			<button class="dropbtn" {% if url_for(request.endpoint).startswith('/parkrun/') %}"class=active"{% endif %}>Parkrun
+		<button class="dropbtn" {% if url_for(request.endpoint).startswith('/parkrun/') %}" class=active"{% endif %}>Parkrun
 					<i class="fa fa-caret-down"></i>
-			</button>
-			 <div class="dropdown-content active">
-				{% for item in runners %}
-						<a href="/parkrun/{{ item.rid }}">{{ item.fullname}} ({{ item.rid }})</a>  
-				{% endfor %}	
-			 </div>
+		</button>
+		 <div class="dropdown-content active">
+			{% for item in runners %}
+					<a href="/parkrun/{{ item.rid }}">{{ item.fullname}} ({{ item.rid }})</a>  
+			{% endfor %}	
+		 </div>
 	</div>
-	 
+#}	
+ 
 	<a href="/ele" {% if url_for(request.endpoint) == '/ele/' %}class="active"{% endif %}>Elevations</a>	
 	{% if current_user.is_anonymous %}
 	<a style=float:right href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
