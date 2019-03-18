@@ -4,7 +4,7 @@
     <style>
       /* Set the size of the div element that contains the map */
       #map {
-        height: 400px;  /* The height is 400 pixels */
+        height: 300px;  /* The height is 400 pixels */
         width: 70%;  /* The width is the width of the web page */
        }
     </style>
@@ -19,7 +19,7 @@ function initMap() {
   var home = {{ map_centre }} 
   // The map, centered at Uluru
   var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: home });
+      document.getElementById('map'), {zoom: 19, center: home });
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: home, map: map});
 }
