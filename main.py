@@ -96,7 +96,7 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/map')
+@app.route('/map1')
 def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
 	centre = '{lat: 51.386539, lng: 0.022874}'
