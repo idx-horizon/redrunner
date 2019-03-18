@@ -99,7 +99,7 @@ def logout():
 @app.route('/map')
 def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
-	centre = '{lat: 52.0123, lng: 0.00213}'
+	centre = '{lat: 51.386539, lng: 0.022874}'
 	
 	return render_template('map.html', api_key=api_key, map_centre = centre)
 	
