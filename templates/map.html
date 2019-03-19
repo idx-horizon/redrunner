@@ -22,15 +22,16 @@
       var map = new google.maps.Map(
           document.getElementById('map'), {zoom: 11, center: center });
           
-      // The marker, positioned at Uluru
-      var marker = new google.maps.Marker({position: home, 
+      var marker = new google.maps.Marker({position: map.getCenter(), 
                                             map: map, 
                                             title: '🏃‍♂️', 
                                             icon: {
                                               path: google.maps.SymbolPath.CIRCLE,
                                               scale: 10
-                                              }
-                    });
+                                              },
+                                            draggable: true,
+                                          });
+                                          
       var marker1 = new google.maps.Marker({position: markers, map: map});
     }
 </script>
