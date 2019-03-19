@@ -13,8 +13,11 @@
     <div id="map"></div>
     
 <script>
+function addMarker() {
+
+}
     function initMap() {
-      // The location of Uluru
+    
       var uluru = {lat: -25.344, lng: 131.036};
       var center = {{ map_centre }} 
       var markers = {{ markers }}
@@ -33,6 +36,18 @@
                                           });
                                           
       var marker1 = new google.maps.Marker({position: markers, map: map});
+      
+      var locations = {{data|safe}};
+      var marker, i;
+
+        for (i = 0; i < locations.length; i++) { 
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(locations[i]['lat'], 
+                locations[i]['lng']),
+                map: map,
+                title: locations[i]['name']
+    });
+}
     }
 </script>
 
