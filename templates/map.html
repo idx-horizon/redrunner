@@ -11,7 +11,7 @@
 
     <h1>Map</h1>
     <div id="map"></div>
-    data=[{{ data }}]
+    data={{ data|safe}}
     
 <script>
 function addMarker() {
@@ -21,7 +21,7 @@ function addMarker() {
     
       var uluru = {lat: -25.344, lng: 131.036};
       var center = {{ map_centre }} 
-      var markers = {{ markers }}
+      /*var markers = {{ markers }} */
       
       var map = new google.maps.Map(
           document.getElementById('map'), {zoom: 11, center: center });
@@ -33,7 +33,7 @@ function addMarker() {
                                               path: google.maps.SymbolPath.CIRCLE,
                                               scale: 10
                                               },
-                                            draggable: true,
+                                            draggable: false,
                                           });
                                           
       /* var marker1 = new google.maps.Marker({position: markers, map: map}); */
