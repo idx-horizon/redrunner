@@ -101,7 +101,7 @@ def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
 	centre = '{lat: 51.386539, lng: 0.022874}'
 	markers = '{lat: 51.307648, lng: -0.184225}'
-	data = = {'name': 'Fred', 'lat': 51.407648, 'lng': -0.194225}
+	data = {'name': 'Fred', 'lat': 51.407648, 'lng': -0.194225}
 	
 	return render_template('map.html', 
 						api_key=api_key, 
