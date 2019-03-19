@@ -103,7 +103,9 @@ def gmap():
 
 	
 	markers = '{lat: 51.307648, lng: -0.184225}'
-	data = {'name': 'Fred', 'lat': 51.407648, 'lng': -0.194225}
+	
+	data = {'name': 'H', 'lat': 51.373982, 'lng': -0.021516}
+	
 	
 	return render_template('map.html', 
 						api_key=api_key, 
