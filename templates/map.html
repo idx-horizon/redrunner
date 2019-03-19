@@ -1,36 +1,42 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-    <style>
+<style>
       /* Set the size of the div element that contains the map */
       #map {
         height: 400px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
        }
-    </style>
+</style>
 
     <h1>Map</h1>
     <div id="map"></div>
-    <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  var home = {{ map_centre }} 
-  var markers = {{ markers }}
-  
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 11, center: home });
+    
+<script>
+    function initMap() {
+      // The location of Uluru
+      var uluru = {lat: -25.344, lng: 131.036};
+      var center = {{ map_centre }} 
+      var markers = {{ markers }}
       
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: home, map: map, title: '🏃‍♂️'});
-  var marker1 = new google.maps.Marker({position: markers, map: map});
+      var map = new google.maps.Map(
+          document.getElementById('map'), {zoom: 11, center: center });
+          
+      // The marker, positioned at Uluru
+      var marker = new google.maps.Marker({position: home, 
+                                            map: map, 
+                                            title: '🏃‍♂️', 
+                                            icon: {
+                                              path: google.maps.SymbolPath.CIRCLE,
+                                              scale: 10
+                                              }
+                    });
+      var marker1 = new google.maps.Marker({position: markers, map: map});
+    }
+</script>
 
-}
-    </script>
-    <script async defer
+<script async defer
     src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">
-    </script>
+</script>
 <P>    
 {% include "_footer.html" %}
