@@ -17,7 +17,7 @@
 	</div>
 {% endif %}
  
-	<a href="/map1" {% if url_for(request.endpoint) == '/map1/' %}class="active"{% endif %}>Map</a>	
+	<a href="/map" {% if url_for(request.endpoint) == '/map/' %}class="active"{% endif %}>Map</a>	
  
 	<a href="/ele" {% if url_for(request.endpoint) == '/ele/' %}class="active"{% endif %}>Elevations</a>	
 	{% if current_user.is_anonymous %}
