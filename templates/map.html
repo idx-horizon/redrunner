@@ -36,17 +36,17 @@ function addMarker() {
                                             draggable: true,
                                           });
                                           
-      var marker1 = new google.maps.Marker({position: markers, map: map});
+      /* var marker1 = new google.maps.Marker({position: markers, map: map}); */
       
       var locations = {{data|safe}};
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i]['lat'], 
-                locations[i]['lng']),
+                position: new google.maps.LatLng(locations[i][1], 
+                locations[i][2]),
                 map: map,
-                title: locations[i]['name']
+                title: locations[i][0]
     });
 }
     }

@@ -102,15 +102,19 @@ def gmap():
 	centre = '{lat: 51.386539, lng: 0.022874}'
 
 	
-	markers = '{lat: 51.307648, lng: -0.184225}'
+	markers = None #'{lat: 51.307648, lng: -0.184225}'
 	
-	data = {'name': 'H', 'lat': 51.373982, 'lng': -0.021516}
+	#data = {'name': 'Fred', 'lat': 51.373982, 'lng': -0.021516}
+	data = [
+		['home', 51.373982, 0.021516],
+		['other', 51.307648, -0.184225]
+	]
 	
 	
 	return render_template('map.html', 
 						api_key=api_key, 
 						markers=markers,
-						data=json.dumps(data),
+						data=data,
 						map_centre = centre)
 	
 @app.route('/home/')
