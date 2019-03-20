@@ -12,6 +12,9 @@
     <h1>Map</h1>
     <div id="map"></div>
     data={{ data|safe}}
+    {% for place in data %}
+    {{ place.name }} {{ place.lat }}, {{ place.lng }}
+    {% endfor %}
     
 <script type="text/javascript">
 
