@@ -12,7 +12,7 @@
     <h1>Map</h1>
     <div id="map"></div>
     
-    {% for place in data|safe %}
+    {% for place in data %}
     <p>{{ place }}
     <p>{{ place.name }} {{ place.lat }}, {{ place.lng }}
     {% endfor %}
@@ -40,7 +40,7 @@
                                           
       /* var marker1 = new google.maps.Marker({position: markers, map: map}); */
       
-      var locations = {{ data|safe }};
+      var locations = {{ data }};
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
