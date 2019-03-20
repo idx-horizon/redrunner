@@ -36,9 +36,10 @@
                                             draggable: false,
                                           });
                                           
-      /* var marker1 = new google.maps.Marker({position: markers, map: map}); */
       
       var locations = {{ markers }};
+      var marker1 = new google.maps.Marker({position: locations[0], map: map}); */
+
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
