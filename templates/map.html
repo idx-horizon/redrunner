@@ -38,7 +38,7 @@
                                           
       
       var locations = {{ markers }};
-      var marker1 = new google.maps.Marker({position: locations[0], map: map}); */
+      var marker1 = new google.maps.Marker({position: locations[0], map: map});
 
       var marker, i;
 
@@ -46,8 +46,8 @@
             console.log(locations[i]);
             console.log(locations[i].name);
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i][1], 
-                locations[i][2]),
+                position: new google.maps.LatLng(locations[i][2], 
+                locations[i][3]),
                 map: map,
                 title: locations[i][0]
     });
