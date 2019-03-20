@@ -13,7 +13,7 @@
     <div id="map"></div>
     data={{ data|safe}}
     {% for place in data %}
-    {{ place.name }} {{ place.lat }}, {{ place.lng }}
+    <p>{{ place.name }} {{ place.lat }}, {{ place.lng }}
     {% endfor %}
     
 <script type="text/javascript">
@@ -44,10 +44,10 @@
 
         for (i = 0; i < locations.length; i++) { 
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i]['lat'], 
-                locations[i]['lng']),
+                position: new google.maps.LatLng(locations[i].lat, 
+                locations[i].lng),
                 map: map,
-                title: locations[i]['name']
+                title: locations[i].name
     });
 }
     }
