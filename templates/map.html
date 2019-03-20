@@ -43,6 +43,8 @@
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
+            console.log(locations[i]);
+            console.log(locations[i].name);
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i].lat, 
                 locations[i].lng),
