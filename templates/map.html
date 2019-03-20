@@ -30,7 +30,6 @@
           
       var marker = new google.maps.Marker({position: map.getCenter(), 
                                             map: map, 
-                                            title: '🏃‍♂️', 
                                             icon: {
                                               path: google.maps.SymbolPath.CIRCLE,
                                               scale: 10
@@ -40,7 +39,7 @@
                                           
       /* var marker1 = new google.maps.Marker({position: markers, map: map}); */
       
-      var locations = {{ data }};
+      var locations = {{ data|safe }};
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
