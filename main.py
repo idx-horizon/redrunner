@@ -114,8 +114,7 @@ def gmap():
 	markers = [list(d.values()) for d in data]
 	return render_template('map.html', 
 						api_key=api_key, 
-						#markers=markers,
-						data=markers,
+						markers=markers,
 						map_centre = centre)
 	
 @app.route('/home/')

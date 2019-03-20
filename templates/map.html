@@ -12,9 +12,9 @@
     <h1>Map</h1>
     <div id="map"></div>
     
-    {% for place in data %}
-    <p>{{ place }}
-    <p>{{ place.name }} {{ place.lat }}, {{ place.lng }}
+    {% for location in markers %}
+    <p>{{ location }}
+    <p>{{ location[0] }} {{ location[1] }}, {{ location[2] }}
     {% endfor %}
     
 <script type="text/javascript">
@@ -23,7 +23,6 @@
     
       var uluru = {lat: -25.344, lng: 131.036};
       var center = {{ map_centre }} 
-      /*var markers = {{ markers }} */
       
       var map = new google.maps.Map(
           document.getElementById('map'), {zoom: 11, center: center });
@@ -39,7 +38,7 @@
                                           
       /* var marker1 = new google.maps.Marker({position: markers, map: map}); */
       
-      var locations = {{ data|safe }};
+      var locations = {{ markers }};
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
