@@ -8,7 +8,8 @@
         width: 100%;  /* The width is the width of the web page */
        }
 </style>
-
+    {{ markers }}
+    
     <h1>Map</h1>
     <div id="map"></div>
     
@@ -37,7 +38,7 @@
                                           });
                                           
       
-      var locations = {{ markers|safe }};
+      var locations = {{ markers|e|safe }};
 /*      var marker1 = new google.maps.Marker({position: locations[0], map: map}); */
 
       var marker, i;
