@@ -11,8 +11,9 @@
 
     <h1>Map</h1>
     <div id="map"></div>
-    data={{ data|safe}}
-    {% for place in data %}
+    
+    {% for place in data|safe %}
+    <p>{{ place }}
     <p>{{ place.name }} {{ place.lat }}, {{ place.lng }}
     {% endfor %}
     
@@ -39,17 +40,17 @@
                                           
       /* var marker1 = new google.maps.Marker({position: markers, map: map}); */
       
-      var locations = {{data|safe}};
+      var locations = {{ data|safe }};
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
             console.log(locations[i]);
             console.log(locations[i].name);
             marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i].lat, 
-                locations[i].lng),
+                position: new google.maps.LatLng(locations[i]['lat'], 
+                locations[i]['lng']),
                 map: map,
-                title: locations[i].name
+                title: locations[i]['name']
     });
 }
     }
