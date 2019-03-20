@@ -110,7 +110,7 @@ def gmap():
 		['other', 51.307648, -0.184225]
 	]
 	
-	
+	data = geo.closest_runs('Bromley', top=5)
 	return render_template('map.html', 
 						api_key=api_key, 
 						markers=markers,
