@@ -14,7 +14,7 @@
     
     {% for location in markers %}
     <p>{{ location }}
-    <p>{{ location[0] }} {{ location[1] }}, {{ location[2] }}
+    <p>{{ location[0] }} {{ location[2] }}, {{ location[3] }}
     {% endfor %}
     
 <script type="text/javascript">
@@ -37,17 +37,16 @@
                                           });
                                           
       
-      var locations = {{ markers }};
-      var marker1 = new google.maps.Marker({position: locations[0], map: map});
+      var locations = {{ markers|safe }};
+/*      var marker1 = new google.maps.Marker({position: locations[0], map: map}); */
 
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
-            console.log(locations[i]);
-            console.log(locations[i].name);
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][2], 
-                locations[i][3]),
+                                                 locations[i][3]
+                                                 ),
                 map: map,
                 title: locations[i][0]
     });
