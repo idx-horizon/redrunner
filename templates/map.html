@@ -1,6 +1,6 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
-
+<meta id="my-data" data-name="{{ markers }}" data-other="{{other}}">
 <style>
       /* Set the size of the div element that contains the map */
       #map {
@@ -38,7 +38,8 @@
                                           });
                                           
       
-      var locations = {{ markers|safe }};
+/*      var locations = {{ markers|safe }}; */
+      var locations = $('#my-data').data-name();
 /*      var marker1 = new google.maps.Marker({position: locations[0], map: map}); */
 
       var marker, i;
