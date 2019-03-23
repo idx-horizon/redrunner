@@ -65,7 +65,10 @@ def closest_runs(run=None, postcode=None, top=10):
 		p = m.get('m')
 		la, lo = get_coordinates(p,root)
 		try:
-			dist[p] =  measure(from_loc=from_coord, to_loc=(float(la), float(lo)))
+			dist[p] =  {'distance': measure(from_loc=from_coord, to_loc=(float(la), float(lo))),
+						'lat': la,
+						'lng':lo
+						}
 		except:
 			pass
 				
@@ -73,7 +76,9 @@ def closest_runs(run=None, postcode=None, top=10):
 	ret_list = []	
 	for ix, w in enumerate(top_list[offset:]):
 		print('{:>3}. {:<30} distance {:.2f} (m)'.format(ix+1, w, dist[w]))
-		ret_list.append({'name': w, 'distance': dist[w], 'lat': la, 'lng': lo})
+		ret_list.append({'name': w, 'distance': dist[w]['distance'], 
+							'lat': la, 
+							'lng': lo})
 		
 	return ret_list
 	#return top_list[offset:]
