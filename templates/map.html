@@ -39,13 +39,24 @@
                                           
       
 /*      var locations = {{ markers|safe }}; */
-      var locations = $('#my-data').data-name();
+/*      var locations = $('#my-data').data-name(); */
+      
+      
+      var locations = [
+            ['Beckenham Place', 2.52, -27.361066, 153.041015], 
+            ['Hoblingwell', 3.45, -27.361066, 153.041015], 
+            ['South Norwood', 3.65, -27.361066, 153.041015], 
+            ['Orpington', 4.35, -27.361066, 153.041015], 
+            ['Crystal Palace', 4.49, -27.361066, 153.041015]
+        ]
+      
+      
 /*      var marker1 = new google.maps.Marker({position: locations[0], map: map}); */
 
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
-            alert(markers)
+            alert(locations)
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][2], 
                                                  locations[i][3]
