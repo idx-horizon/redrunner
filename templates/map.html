@@ -38,12 +38,13 @@
                                           });
                                           
       
-      var locations = {{ markers|e|safe }};
+      var locations = {{ markers|safe }};
 /*      var marker1 = new google.maps.Marker({position: locations[0], map: map}); */
 
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
+            alert(markers)
             marker = new google.maps.Marker({
                 position: new google.maps.LatLng(locations[i][2], 
                                                  locations[i][3]
