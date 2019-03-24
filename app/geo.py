@@ -74,9 +74,10 @@ def closest_runs(run=None, postcode=None, top=10):
 			pass
 	
 	top_list = sorted(dist.items(), key=lambda i: i[1]['distance'])[:top+offset]
+	print('**', top_list)
 	ret_list = []	
 	for ix, w in enumerate(top_list[offset:]):
-#		print('{:>3}. {:<30} distance {:.2f} (m)'.format(ix+1, w, 1)) #dist[w]['distance']))
+		print('{:>3}. {:<30} distance {:.2f} (m)'.format(ix+1, w, dist[w]['distance']))
 		ret_list.append({'name': w, 
 						 'distance': dist[w]['distance'], 
 						 'lat': dist[w]['lat'], 
