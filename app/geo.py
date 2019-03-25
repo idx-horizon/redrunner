@@ -77,17 +77,19 @@ def closest_runs(run=None, postcode=None, top=10):
 	print('**', top_list)
 	ret_list = []	
 	for ix, w in enumerate(top_list[offset:]):
-		print('{:>3}. {:<30} distance {:.2f} (m)'.format(ix+1, w, dist[w]['distance']))
-		ret_list.append({'name': w, 
-						 'distance': dist[w]['distance'], 
-						 'lat': dist[w]['lat'], 
-						 'lng': dist[w]['lng']}
+		#print(w[1]['distance'])
+		print('{:>3}. {:<30} distance {:.2f} (m)'.format(ix+1, w[0], w[1]['distance']))
+		ret_list.append({'name': w[0], 
+						 'distance': w[1]['distance'], 
+						 'lat': w[1]['lat'], 
+						 'lng': w[1]['lng']}
 						)
 		
 	return ret_list
 	#return top_list[offset:]
 	
-#closest_runs(run='Bromley',top=10)
+#
+#closest_runs(run='Bromley',top=5)
 #closest_runs(postcode='BR4 9NY',top=20)
 #closest_runs(postcode='CR5 3AL',top=20)
 
