@@ -7,6 +7,7 @@
         width: 100%;  /* The width is the width of the web page */
        }
 </style>
+{{ center }}
     <h1>Map</h1>
     <div id="map"></div>
         
@@ -19,6 +20,8 @@
       
       var map = new google.maps.Map(
           document.getElementById('map'), {zoom: 12, center: new google.maps.LatLng(center[0], center[1]) });
+          
+          alert(center)
           
       var marker = new google.maps.Marker({position: map.getCenter(), 
                                             map: map, 
