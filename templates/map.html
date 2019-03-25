@@ -10,7 +10,8 @@
 
     <h1>Map</h1>
     <div id="map"></div>
-    {{ map_centre|safe }}
+    CENTER={{ map_centre|safe }}<p>
+    MARKERS={{ markers|safe }}
         
 <script type="text/javascript">
 
@@ -20,9 +21,13 @@
       var center = {{ map_centre|safe }};
       
       var map = new google.maps.Map(
-          document.getElementById('map'), {zoom: 12, center: new google.maps.LatLng(center[0], center[1]) });
+          document.getElementById('map'), 
+          {zoom: 12, 
+          center: new google.maps.LatLng(center[0], center[1]) }
+          );
           
-          alert(center)
+          alert(center[0])
+          alert(center[1])
           
       var marker = new google.maps.Marker({position: map.getCenter(), 
                                             map: map, 
