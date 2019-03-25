@@ -100,7 +100,8 @@ def logout():
 def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
 	centre = '{lat: 51.386539, lng: 0.022874}'
-	h = current_user.homerun if current_user.is_authenicated else 'Bromley'
+	centre = (51.410992, -0.335791)
+	h = current_user.homerun if current_user.is_authenticated else 'Bromley'
 	
 	data = geo.closest_runs(h, top=10)
 	markers = [list(d.values()) for d in data]

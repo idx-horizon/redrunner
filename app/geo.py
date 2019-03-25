@@ -16,7 +16,12 @@ def get_postcode_coordinates(postcode):
 		print('Error: not found {}'.format(postcode))	
 	
 	
-def get_coordinates(place, root):
+def get_coordinates(place, root=None):
+	
+	if not root:
+			tree = ET.parse('geo.xml')
+			root = tree.getroot()
+			
 	for e in root.findall('.//e/[@m="' + place + '"]'):
 		try: 
 			return ( float(e.get('la')), float(e.get('lo')))		
