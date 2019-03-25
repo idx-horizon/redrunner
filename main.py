@@ -100,17 +100,8 @@ def logout():
 def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
 	centre = '{lat: 51.386539, lng: 0.022874}'
-
 	
-	markers = None #'{lat: 51.307648, lng: -0.184225}'
-	
-	#data = {'name': 'Fred', 'lat': 51.373982, 'lng': -0.021516}
-	#data = [
-	#	['home', 51.373982, 0.021516],
-	#	['other', 51.307648, -0.184225]
-	#]
-	
-	data = geo.closest_runs('Bromley', top=20)
+	data = geo.closest_runs(current_user.home_run or 'Lloyd', top=10)
 	markers = [list(d.values()) for d in data]
 	return render_template('map.html', 
 						api_key=api_key, 

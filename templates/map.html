@@ -1,14 +1,12 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
-/* <meta id="my-data" data-name="{{ markers }}" data-other="{{other}}"> */
 <style>
       /* Set the size of the div element that contains the map */
       #map {
-        height: 400px;  /* The height is 400 pixels */
+        height: 500px;  /* The height is 400 pixels */
         width: 100%;  /* The width is the width of the web page */
        }
 </style>
-    
     <h1>Map</h1>
     <div id="map"></div>
         
@@ -16,7 +14,7 @@
 
     function initMap() {
     
-      var uluru = {lat: -25.344, lng: 131.036};
+      /* var uluru = {lat: -25.344, lng: 131.036}; */
       var center = {{ map_centre }} 
       
       var map = new google.maps.Map(
@@ -30,23 +28,19 @@
                                               },
                                             draggable: false,
                                           });
-                                          
-      
-/*      var locations = {{ markers|safe }}; */
-/*      var locations = $('#my-data').data-name(); */
       
       var locations = {{ markers|safe }};
       var marker, i;
 
         for (i = 0; i < locations.length; i++) { 
             marker = new google.maps.Marker({
+                title: locations[i][0],
                 position: new google.maps.LatLng(locations[i][2], 
                                                  locations[i][3]
                                                  ),
-                map: map,
-                title: locations[i][0]
-    });
-}
+                map: map
+              });
+        }
     }
 </script>
 
