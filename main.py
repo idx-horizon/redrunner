@@ -103,7 +103,7 @@ def gmap():
 	h = current_user.home_run if current_user.is_authenticated else 'Bushy Park'
 	centre = list(geo.get_coordinates(h,None))
 	
-	data = geo.closest_runs(h, top=10)
+	data = geo.closest_runs(h, top=20)
 	markers = [list(d.values()) for d in data]
 	return render_template('map.html', 
 						api_key=api_key, 
