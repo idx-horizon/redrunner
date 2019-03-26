@@ -69,7 +69,7 @@ def closest_runs(run=None, postcode=None, top=10):
 	for m in tree.iter('e'):
 		p = m.get('m')
 		la, lo = get_coordinates(p,root)
-		flag_colour = 'green' if p.startswith('B') else flag_colour = 'red'
+		flag_colour = 'green' if p.startswith('B') else 'red'
 		try:
 			dist[p] =  {'distance': measure(from_loc=from_coord, 
 										to_loc=(float(la), float(lo))),
