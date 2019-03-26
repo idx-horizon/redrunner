@@ -33,6 +33,8 @@
     
       /* var uluru = {lat: -25.344, lng: 131.036}; <td align="right">{ "%0.2f" % item[1]|float }}</td>*/
       var center = {{ map_centre|safe }};
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelindex = 0;
       
       var map = new google.maps.Map(
           document.getElementById('map'), 
@@ -60,7 +62,8 @@
                                                  locations[i][3]
                                                  ),
                 icon: image,
-                map: map
+                map: map.
+                label: labels[labelIndex++ % labels.length]
               });
         }
     }
