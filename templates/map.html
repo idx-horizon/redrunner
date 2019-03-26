@@ -18,7 +18,7 @@
 		</tr>
 		{% for item in markers %}
 			<tr>
-				<td>{{ item }}</td>
+				<td>{{ item|split[0] }}</td>
 				<td align="right">To Do </td>
 			</tr>
 		{% endfor %}
