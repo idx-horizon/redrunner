@@ -99,9 +99,8 @@ def logout():
 @app.route('/map')
 def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
-	#centre = '{lat: 51.386539, lng: 0.022874}'
-	#centre = [51.410992, -0.335791]
-	h = current_user.home_run if current_user.is_authenticated else 'Bromley'
+	
+	h = current_user.home_run if current_user.is_authenticated else 'Bushy Park'
 	centre = list(geo.get_coordinates(h,None))
 	
 	data = geo.closest_runs(h, top=10)

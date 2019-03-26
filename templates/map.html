@@ -22,18 +22,15 @@
       
       var map = new google.maps.Map(
           document.getElementById('map'), 
-          {zoom: 12, 
+          {zoom: 10, 
           center: new google.maps.LatLng(center[0], center[1]) }
           );
-          
-          alert(center[0])
-          alert(center[1])
           
       var marker = new google.maps.Marker({position: map.getCenter(), 
                                             map: map, 
                                             icon: {
                                               path: google.maps.SymbolPath.CIRCLE,
-                                              scale: 11
+                                              scale: 10
                                               },
                                             draggable: false,
                                           });
