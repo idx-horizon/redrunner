@@ -16,10 +16,10 @@
 			<th width="55%" align="left">parkrun</th>
 			<th width="15%" align="right">miles</th>
 		</tr>
-		{% for item in markers %}
+		{% for i, item in enumerate(markers) %}
 			<tr>
-				<td>{{ item }}</td>
-				<td align="right">To Do </td>
+				<td>{{ i }}. {{ item }}</td>
+				<td align="right">markersTo Do </td>
 			</tr>
 		{% endfor %}
 	</table>
