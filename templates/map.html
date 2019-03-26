@@ -51,6 +51,7 @@
       
       var locations = {{ markers|safe }};
       var marker, i;
+var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
         for (i = 0; i < locations.length; i++) { 
             marker = new google.maps.Marker({
@@ -58,6 +59,7 @@
                 position: new google.maps.LatLng(locations[i][2], 
                                                  locations[i][3]
                                                  ),
+                icon = image,
                 map: map
               });
         }
