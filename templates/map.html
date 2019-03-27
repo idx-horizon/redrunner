@@ -16,10 +16,10 @@
 			<th width="55%" align="left">parkrun</th>
 			<th width="15%" align="right">miles</th>
 		</tr>
-		{% for item in markers %}
+		{% for k,v in markers %}
 			<tr>
-				<td>{{ loop.index }}. {{ item }}</td>
-				<td align="right">markersTo Do </td>
+				<td>{{ loop.index }}. {{ k }}</td>
+				<td align="right">{{ v }}</td>
 			</tr>
 		{% endfor %}
 	</table>
