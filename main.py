@@ -109,7 +109,7 @@ def gmap():
 	return render_template('map.html', 
 						api_key=api_key, 
 						markers=markers,
-						map_centre=centre
+						map_centre=centre,
 						rid=rid)
 	
 @app.route('/home/')
