@@ -101,6 +101,7 @@ def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
 	
 	h = current_user.home_run if current_user.is_authenticated else 'Bushy Park'
+	rid = current_user.rid if current_user.is_authenticated else None
 	centre = list(geo.get_coordinates(h,None))
 	
 	data = geo.closest_runs(h, top=15)
@@ -108,7 +109,8 @@ def gmap():
 	return render_template('map.html', 
 						api_key=api_key, 
 						markers=markers,
-						map_centre=centre)
+						map_centre=centre
+						rid=rid)
 	
 @app.route('/home/')
 @app.route('/home/<name>')
