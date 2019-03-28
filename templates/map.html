@@ -20,7 +20,7 @@
 		</tr>
 		{% for rname, rdist, rlat, rlng, rflag in markers %}
 			<tr>
-				<td>{{ loop.index }}.</td>
+				<td align="center">{{ loop.index }}.</td>
 				<td>{{ rname }}</td>
 				<td align="right">{{ rdist }}</td>
 				<td align="center">{{ rflag }}</td>
@@ -29,7 +29,6 @@
 	</table>
 	
     CENTER={{ map_centre|safe }}<p>
-    MARKERS={{ markers|safe }}
         
 <script type="text/javascript">
 
