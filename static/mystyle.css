@@ -84,6 +84,9 @@ body {
 	background-color: #4CAF50; 
 }
 
+#hilite_red {
+	background-color: red; 
+}
 
 
 /* Navbar container */

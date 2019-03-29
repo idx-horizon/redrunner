@@ -25,7 +25,10 @@
 				<td>{{ rname }}</td>
 				<td align="right">{{ rdist }}</td>
 				<td align="center">{{ rflag }}</td>
-				<td align="center">{{ rtimesrun }}</td>
+				<td align="center" 
+					{% if rtimesrun < 1 %} 
+		   				  id="hilite_red"
+					{% endif %}>{{ rtimesrun }}</td>
 			</tr>
 		{% endfor %}
 	</table>
