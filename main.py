@@ -104,7 +104,7 @@ def gmap():
 	rid = current_user.rid if current_user.is_authenticated else None
 	centre = list(geo.get_coordinates(h,None))
 	
-	data = geo.closest_runs(h, top=15, runner=rd[rid])
+	data = geo.closest_runs(h, top=15, runner_data=rd[rid])
 	markers = [list(d.values()) for d in data]
 	return render_template('map.html', 
 						api_key=api_key, 
@@ -275,6 +275,5 @@ if __name__ == '__main__':
 
 	print(rd['184594'])
 	print(type(rd['184594']))
-	print(rd['184594'].keys())
 	runapp(port,True)
 

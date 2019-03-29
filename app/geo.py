@@ -48,7 +48,7 @@ def measure(from_loc, to_loc):
 	
 	return distance
 	
-def closest_runs(run=None, postcode=None, top=10):
+def closest_runs(run=None, postcode=None, top=10, runner_data=None):
 	tree = ET.parse('geo.xml')
 	root = tree.getroot()
 
@@ -69,13 +69,21 @@ def closest_runs(run=None, postcode=None, top=10):
 	for m in tree.iter('e'):
 		p = m.get('m')
 		la, lo = get_coordinates(p,root)
-		flag_colour = 'green' if p.startswith('B') else 'red'
+		
+		if runner_data:
+			times_run = len([x for x in runner_data if x['Event'] = p])
+			flag_colour = 'green' if  time_run > 0 else 'red'
+		else:
+			time_run = 0
+			flag_colour = 'green' if p.startswith('B') else 'red'
+			
 		try:
 			dist[p] =  {'distance': measure(from_loc=from_coord, 
 										to_loc=(float(la), float(lo))),
 						'lat': la,
 						'lng':lo,
-						'flag': flag_colour
+						'flag': flag_colour,
+						'times_run': times_run
 						}
 		except:
 			pass
@@ -90,7 +98,8 @@ def closest_runs(run=None, postcode=None, top=10):
 						 'distance': w[1]['distance'], 
 						 'lat': w[1]['lat'], 
 						 'lng': w[1]['lng'],
-						 'flag': w[1]['flag']}
+						 'flag': w[1]['flag'],
+						 'times_run': w[1]['times_run']}
 						)
 		
 	return ret_list
