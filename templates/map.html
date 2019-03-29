@@ -26,7 +26,7 @@
 				<td align="right">{{ rdist }}</td>
 				<td align="center">{{ rflag }}</td>
 				<td align="center" 
-					{% if {{ rtimesrun }} < 1 %} 
+					{% if rtimesrun|int < 1 %} 
 		   				  id="hilite_red"
 		   			{% else %}
 		   				  id="hilite"
