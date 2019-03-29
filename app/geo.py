@@ -72,9 +72,9 @@ def closest_runs(run=None, postcode=None, top=10, runner_data=None):
 		
 		if runner_data:
 			times_run = len([x for x in runner_data if x['Event'] == p])
-			flag_colour = 'green' if  time_run > 0 else 'red'
+			flag_colour = 'green' if  times_run > 0 else 'red'
 		else:
-			time_run = 0
+			times_run = 0
 			flag_colour = 'green' if p.startswith('B') else 'red'
 			
 		try:
