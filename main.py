@@ -274,7 +274,7 @@ if __name__ == '__main__':
 	port = int(os.environ.get("RR_PORT", 8000))
 
 	print(rd['184594'])
-	print(type(rd['184594'])
+	print(type(rd['184594']))
 	print(rd['184594'].keys())
 	runapp(port,True)
 
