@@ -102,11 +102,11 @@ def gmap():
 	
 	h = current_user.home_run if current_user.is_authenticated else 'Bushy Park'
 	rid = current_user.rid if current_user.is_authenticated else None
-	rd = current_user.rid if current_user.is_authenticated else None
+	runner_data = rd[rid] if current_user.is_authenticated else None
 	
 	centre = list(geo.get_coordinates(h,None))
 	
-	data = geo.closest_runs(h, top=25, runner_data=rd)
+	data = geo.closest_runs(h, top=25, runner_data=runner_data)
 	markers = [list(d.values()) for d in data]
 	return render_template('map.html', 
 						api_key=api_key, 
