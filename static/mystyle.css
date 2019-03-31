@@ -88,6 +88,10 @@ body {
 	background-color: red; 
 }
 
+#hilitegreen {
+	background-color: #4CAF50; 
+}
+
 
 /* Navbar container */
 .navbar {

@@ -15,8 +15,7 @@
 		<tr>
 			<th width="5%" align="center">#</th>
 			<th width="45%" align="left">parkrun</th>
-			<th width="15%" align="right">miles</th>
-			<th width="10%" align="center">flag</th>
+			<th width="10%" align="right">miles</th>
 			<th width="10%" align="center">count</th>
 		</tr>
 		{% for rname, rdist, rlat, rlng, rflag, rtimesrun in markers %}
@@ -24,10 +23,11 @@
 				<td align="center">{{ loop.index }}.</td>
 				<td>{{ rname }}</td>
 				<td align="right">{{ rdist }}</td>
-				<td align="center">{{ rflag }}</td>
 				<td align="center" 
 					{% if rtimesrun|int < 1 %} 
 		   				  id="hilitered"
+		   			{% else %}
+		   				  id="hilitegreen"
 					{% endif %}>{{ rtimesrun }}</td>
 			</tr>
 		{% endfor %}
