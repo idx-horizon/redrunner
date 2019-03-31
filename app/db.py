@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from app.models import User, Runner, Apple
+from app.models import User, Runner
 from app import flaskdb
 
 class DBO:
