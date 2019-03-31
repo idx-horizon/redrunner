@@ -53,7 +53,8 @@ class DBO:
 					rid char(10) not null, 
 					public_flag bool, 
 					fullname char(50) NOT NULL, 
-					threshold char(10)
+					threshold char(10),
+					home_run char(50)
 					)
 			'''
 		)
@@ -61,19 +62,21 @@ class DBO:
 		con.commit()
 		
 		for thisrunner in {
-			('184594',  'Ian',      '32:00', 1),
-			('185368',  'Matt',     '25:00', 0),
-			('4327482', 'Caroline', '34:00', 0),
-			('2564629', 'Michael',  '25:00', 0),
-			('23656',   'Eileen',   '34:00', 0),
-			('3158074', 'Sam',      '30:00', 0),
+			('184594',  'Ian',      '32:00', 1, 'Bromley'),
+			('185368',  'Matt',     '25:00', 1, 'Bromley'),
+			('4327482', 'Caroline', '34:00', 0, 'Banstead Woods'),
+			('2564629', 'Michael',  '25:00', 0, 'Riddlesdown'),
+			('23656',   'Eileen',   '34:00', 0, 'Clare'),
+			('3158074', 'Sam',      '30:00', 1, None),
 			
 		}:
 			r = Runner(rid=thisrunner[0],
 						fullname=thisrunner[1], 
 						threshold=thisrunner[2], 
-						public_flag=thisrunner[3]
+						public_flag=thisrunner[3],
+						home_run=thisrunner[4]
 						)
+						
 			flaskdb.session.add(r)
 
 		flaskdb.session.commit()

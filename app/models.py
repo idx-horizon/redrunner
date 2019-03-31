@@ -4,16 +4,20 @@ from app import flaskdb, login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class Apple(flaskdb.Model):
-    xid     = flaskdb.Column(flaskdb.Integer, primary_key=True)
-    xname   = flaskdb.Column(flaskdb.String(64), index=True, unique=True)
+#class Apple(flaskdb.Model):
+#    xid     = flaskdb.Column(flaskdb.Integer, primary_key=True)
+#    xname   = flaskdb.Column(flaskdb.String(64), index=True, unique=True)
 
 
 class Runner(flaskdb.Model):
-    rid = flaskdb.Column(flaskdb.String(10), index=True, unique=True, primary_key=True)
+    rid = flaskdb.Column(flaskdb.String(10), 
+                         index=True, 
+                         unique=True, 
+                         primary_key=True)
     public_flag = flaskdb.Column(flaskdb.Boolean)
     fullname = flaskdb.Column(flaskdb.String(50))
     threshold = flaskdb.Column(flaskdb.String(10))
+    home_run = flaskdb.Column(flaskdb.String(50))
     
     def __repr__(self):
         return '<Runner {} {}'.format(self.rid, self.fullname) 
