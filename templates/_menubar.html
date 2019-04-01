@@ -23,7 +23,7 @@
 	{% if current_user.is_anonymous %}
 	<a style=float:right href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
 	{% else %}
-	<a style=float:right href="#">{{ current_user.username|title</a>
+	<a style=float:right href="#">{{ current_user.username|title }}</a>
 	<a style=float:right href="/logout" {% if url_for(request.endpoint) == '/logout/' %}class="active"{% endif %}>Logout</a>	
 	{% endif %}
 </div>
