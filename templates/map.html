@@ -20,15 +20,15 @@
 		</tr>
 		{% for rname, rdist, rlat, rlng, rflag, rtimesrun in markers %}
 			<tr>
-				<td align="center">{{ loop.index }}.</td>
-				<td>{{ rname }}</td>
-				<td align="right">{{ rdist }}</td>
 				<td align="center" 
 					{% if rtimesrun|int < 1 %} 
 		   				  id="hilitered"
 		   			{% else %}
 		   				  id="hilitegreen"
-					{% endif %}>{{ rtimesrun }}</td>
+					{% endif %}>{{ loop.index }}.</td>
+				<td>{{ rname }}</td>
+				<td align="right">{{ rdist }}</td>
+				<td align="center">{{ rtimesrun }}</td>
 			</tr>
 		{% endfor %}
 	</table>
@@ -54,7 +54,7 @@
                                             map: map, 
                                             icon: {
                                               path: google.maps.SymbolPath.CIRCLE,
-                                              scale: 10
+                                              scale: 12
                                               },
                                             draggable: false,
                                           });
