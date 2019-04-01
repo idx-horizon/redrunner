@@ -31,7 +31,7 @@
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <div class="btn-group">
-            <button class="button" onlick {{ form.submit() }}>Login</button>
+            <button class="button" onlick="{{ form.submit() }}">Login</button>
         </div>
     </form>
 {% endblock %}
