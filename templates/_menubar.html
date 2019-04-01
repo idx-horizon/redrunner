@@ -21,13 +21,14 @@
  
 	<a href="/ele" {% if url_for(request.endpoint) == '/ele/' %}class="active"{% endif %}>Elevations</a>	
 	{% if current_user.is_anonymous %}
+	<a style=float:right href="#">{{ current_user.username|Title</a>
 	<a style=float:right href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
 	{% else %}
 	<a style=float:right href="/logout" {% if url_for(request.endpoint) == '/logout/' %}class="active"{% endif %}>Logout</a>	
 	{% endif %}
 </div>
 {% if current_user.is_authenticated %}
-	<div>User: {{ current_user.username|title}}</div>
+	<div>User: {{ current_user.username|title}} {{ current_user.home_run}}</div>
 	<div>Home Run/Postcode: {{ home_run() }}/{{ home_postcode() }}</div>
 {% endif %}
 

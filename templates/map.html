@@ -8,7 +8,10 @@
        }
 </style>
 
-    <h1>Map: {{ rid }}</h1>
+{% if current_user.is_authenticated %}
+
+    <h1>Map: {{ rid }} Centre={{ map_centre|safe }}<p>
+</h1>
     <div id="map"></div>
     <p>
 	<table style="width:70%;">
@@ -32,14 +35,15 @@
 			</tr>
 		{% endfor %}
 	</table>
-	
-    CENTER={{ map_centre|safe }}<p>
+{% else %}
+	<P>
+	<b>You are not logged in, to view closest runs <a href = '/login'>login</a></b>
+	<P> 
+{% endif %}	
         
 <script type="text/javascript">
 
     function initMap() {
-    
-      /* var uluru = {lat: -25.344, lng: 131.036}; <td align="right">{ "%0.2f" % item[1]|float }}</td>*/
       var center = {{ map_centre|safe }};
       var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var labelindex = 0;
