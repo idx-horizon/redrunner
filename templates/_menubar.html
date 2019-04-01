@@ -20,12 +20,16 @@
 	<a href="/map" {% if url_for(request.endpoint) == '/map/' %}class="active"{% endif %}>Map</a>	
  
 	<a href="/ele" {% if url_for(request.endpoint) == '/ele/' %}class="active"{% endif %}>Elevations</a>	
+	<div class="topnav-right">
 	{% if current_user.is_anonymous %}
-	<a style=float:right href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
+		<a style=float:right href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
 	{% else %}
-	<a style=float:right href="#">{{ current_user.username|title }}</a>
-	<a style=float:right href="/logout" {% if url_for(request.endpoint) == '/logout/' %}class="active"{% endif %}>Logout</a>	
+		<div class="topnav-right">
+		<a href="#">{{ current_user.username|title }}</a>
+		<a href="/logout" {% if url_for(request.endpoint) == '/logout/' %}
+			class="active"{% endif %}>Logout</a>	
 	{% endif %}
+	</div>
 </div>
 {% if current_user.is_authenticated %}
 	<div>User: {{ current_user.username|title}}</div>

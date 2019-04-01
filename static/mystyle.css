@@ -33,6 +33,9 @@ title {
 	color: white;
 }
 
+.topnav-right {
+  float: right;
+}
 	
 #mybutton {
 	display: inline-block;
