@@ -65,9 +65,9 @@ def handle_error_route(error):
 	return redirect('/error/500')
 
 @app.route('/error/')
-@app.route('/error/code')
-def error():
-	return render_template('error.html', form=None)
+@app.route('/error/<code>')
+def error(code=None):
+	return render_template('error.html', error_code=code)
 
 @app.route('/')
 def index():
