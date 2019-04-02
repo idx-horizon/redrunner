@@ -1,0 +1,16 @@
+{% include "_header.html" %}
+{% include "_menubar.html" %}
+
+<h1>User</h1>
+{% if current_user.is_authenticated %}
+	User name: {{ current_user.user_name }} <P>
+	Home run: {{ current_user.home_run }} <P>
+	Home postcode: {{ current_user.home_postcode }} <P>
+{% else %}
+	<P>
+	<b>You are not logged in. To continue <a href = '/login'>login</a></b>
+	<P> 
+{% endif %}
+
+<p>
+{% include "_footer.html" %}
