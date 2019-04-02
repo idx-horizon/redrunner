@@ -57,13 +57,15 @@ app.jinja_env.filters['datetimefilter'] = datetimefilter
 		
 @app.errorhandler(404)
 def error_404(error):
-	return make_response(jsonify({'error': '404 - Not found'}), 404)
+	return redirect('/error/404')
+#	return make_response(jsonify({'error': '404 - Not found'}), 404)
 
 @app.errorhandler(500)
 def handle_error_route(error):
-	return redirect('/error/')
+	return redirect('/error/500')
 
 @app.route('/error/')
+@app.route('/error/code')
 def error():
 	return render_template('error.html', form=None)
 
@@ -96,8 +98,9 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/home')
-def gmap():
+@app.route('/home/')
+@app.route('/home/<name>')
+def home(name=None):
 	api_key = open('resources/gmap.key').read()[:-1]
 	if current_user.is_authenticated:
 		h = current_user.home_run 
@@ -107,7 +110,6 @@ def gmap():
 		h = 'Bushy Park'
 		rid = None
 		runner_date = []
-	endif	
 	
 	centre = list(geo.get_coordinates(h,None))
 
@@ -123,13 +125,13 @@ def gmap():
 	
 @app.route('/home1/')
 @app.route('/home1/<name>')
-def home(name=None):
+def home1(name=None):
 	if current_user.is_authenticated:
 		closest = geo.closest_runs(current_user.home_run, top=20) 
 	else: 
 		closest = []
 		
-	return render_template('home.html', appname=APPNAME, env_home_run=HOME_RUN,
+	return render_template('home-old.html', appname=APPNAME, env_home_run=HOME_RUN,
 							name=name,
 							runners=runners,
 							closest=closest,
