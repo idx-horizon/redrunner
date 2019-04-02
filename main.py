@@ -96,7 +96,7 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
-@app.route('/map')
+@app.route('/home')
 def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
 	
@@ -108,14 +108,14 @@ def gmap():
 	
 	data = geo.closest_runs(h, top=25, runner_data=runner_data)
 	markers = [list(d.values()) for d in data]
-	return render_template('map.html', 
+	return render_template('home.html', 
 						api_key=api_key, 
 						markers=markers,
 						map_centre=centre,
 						rid=rid)
 	
-@app.route('/home/')
-@app.route('/home/<name>')
+@app.route('/home1/')
+@app.route('/home1/<name>')
 def home(name=None):
 	if current_user.is_authenticated:
 		closest = geo.closest_runs(current_user.home_run, top=20) 

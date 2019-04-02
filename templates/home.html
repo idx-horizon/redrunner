@@ -1,18 +1,36 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
+<style>
+      /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+</style>
 
-<h1>Home</h1>
 {% if current_user.is_authenticated %}
 
+    <h1>Home Run: {{ current_user.home_run }}</h1>
+    <div id="map"></div>
+    <p>
 	<table style="width:70%;">
 		<tr>
-			<th width="55%" align="left">parkrun</th>
-			<th width="15%" align="right">miles</th>
+			<th width="5%" align="center">#</th>
+			<th width="45%" align="left">parkrun</th>
+			<th width="10%" align="right">miles</th>
+			<th width="10%" align="center">count</th>
 		</tr>
-		{% for item in closest %}
+		{% for rname, rdist, rlat, rlng, rflag, rtimesrun in markers %}
 			<tr>
-				<td>{{ item.name }}</td>
-				<td align="right">{{ "%0.2f" % item.distance|float }}</td>
+				<td align="center" 
+					{% if rtimesrun|int < 1 %} 
+		   				  id="hilitered"
+		   			{% else %}
+		   				  id="hilitegreen"
+					{% endif %}>{{ loop.index }}.</td>
+				<td>{{ rname }}</td>
+				<td align="right">{{ rdist }}</td>
+				<td align="center">{{ rtimesrun }}</td>
 			</tr>
 		{% endfor %}
 	</table>
@@ -20,12 +38,50 @@
 	<P>
 	<b>You are not logged in, to view closest runs <a href = '/login'>login</a></b>
 	<P> 
-{% endif %}
+{% endif %}	
+        
+<script type="text/javascript">
 
-<p>
-{#
-	<img src="../static/mygraph.png?" + {{ timestamp }} alt="graph by year" width="70%">
-#}
+    function initMap() {
+      var center = {{ map_centre|safe }};
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelindex = 0;
+      
+      var map = new google.maps.Map(
+          document.getElementById('map'), 
+          {zoom: 10, 
+          center: new google.maps.LatLng(center[0], center[1]) }
+          );
+          
+      var marker = new google.maps.Marker({position: map.getCenter(), 
+                                            map: map, 
+                                            icon: {
+                                              path: google.maps.SymbolPath.CIRCLE,
+                                              scale: 12
+                                              },
+                                            draggable: false,
+                                          });
+      
+      var locations = {{ markers|safe }};
+      var marker, i;
 
-<p>
+        for (i = 0; i < locations.length; i++) { 
+	 		var image = 'static/' + locations[i][4] + '.jpeg';
+            marker = new google.maps.Marker({
+                title: locations[i][0],
+                position: new google.maps.LatLng(locations[i][2], 
+                                                 locations[i][3]
+                                                 ),
+                icon: image,
+                map: map,
+                label: (i+1).toString() /* labels[labelindex++ % labels.length] */
+              });
+        }
+    }
+</script>
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key={{ api_key }}&callback=initMap">
+</script>
+<P>    
 {% include "_footer.html" %}
