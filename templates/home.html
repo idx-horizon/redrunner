@@ -35,6 +35,7 @@
 		{% endfor %}
 	</table>
 {% else %}
+	<h1>Home</h1>
 	<P>
 	<b>You are not logged in, to view closest runs <a href = '/login'>login</a></b>
 	<P> 
@@ -44,7 +45,7 @@
 
     function initMap() {
       var center = {{ map_centre|safe }};
-      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      /* var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; */
       var labelindex = 0;
       
       var map = new google.maps.Map(

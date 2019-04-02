@@ -99,13 +99,20 @@ def logout():
 @app.route('/home')
 def gmap():
 	api_key = open('resources/gmap.key').read()[:-1]
-	
-	h = current_user.home_run if current_user.is_authenticated else 'Bushy Park'
-	rid = current_user.rid if current_user.is_authenticated else None
-	runner_data = rd[rid] if current_user.is_authenticated else None
+	if current_user.is_authenticated:
+		h = current_user.home_run 
+		rid = current_user.rid
+		runner_data = rd[rid]
+	else:
+		h = 'Bushy Park'
+		rid = None
+		runner_date = []
+	endif	
 	
 	centre = list(geo.get_coordinates(h,None))
-	
+
+	print('** Home for {} {} #{}'.format(rid, h, len(runner_date))
+		
 	data = geo.closest_runs(h, top=25, runner_data=runner_data)
 	markers = [list(d.values()) for d in data]
 	return render_template('home.html', 
