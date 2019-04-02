@@ -16,7 +16,7 @@ from werkzeug.urls import url_parse
 
 from app import app, THISDB, APPNAME
 
-from app.utils import get_elevations #, get_external_elevations, getpostcode, check_url_status, save_elevations
+from app.utils import get_elevations
 from app.forms import LoginForm
 #from app.config import Config
 
@@ -213,6 +213,7 @@ def runapp(port,debug=True):
 	#port = int(os.environ.get("PORT", 80))
 	
 	app.run(host='0.0.0.0') #app.run(port=port, debug=debug)
+	logout_user()
 	
 
 def count_by(runner, type='course'):
@@ -269,10 +270,10 @@ if __name__ == '__main__':
 #		print('***', {l for l in string.ascii_uppercase if l not in az_done.keys()})
 		rdtotals[runner['rid']]['missing'] = {'\n'.join(missing): len(missing)}
 
-	chart_data = {'Ian':  rdtotals['184594']['year'],
-				  'Matt': rdtotals['185368']['year']}
-
-	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
+#	chart_data = {'Ian':  rdtotals['184594']['year'],
+#				  'Matt': rdtotals['185368']['year']}
+#
+#	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
 	
 					
 	port = int(os.environ.get("RR_PORT", 8000))
