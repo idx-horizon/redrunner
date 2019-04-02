@@ -109,11 +109,11 @@ def home(name=None):
 	else:
 		h = 'Bushy Park'
 		rid = None
-		runner_date = []
+		runner_data = []
 	
 	centre = list(geo.get_coordinates(h,None))
 
-	print('** Home for {} {} #{}'.format(rid, h, len(runner_date)))
+	print('** Home for {} {} #{}'.format(rid, h, len(runner_data)))
 		
 	data = geo.closest_runs(h, top=25, runner_data=runner_data)
 	markers = [list(d.values()) for d in data]
