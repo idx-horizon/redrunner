@@ -123,19 +123,12 @@ def home(name=None):
 						map_centre=centre,
 						rid=rid)
 	
-@app.route('/home1/')
-@app.route('/home1/<name>')
-def home1(name=None):
-	if current_user.is_authenticated:
-		closest = geo.closest_runs(current_user.home_run, top=20) 
-	else: 
-		closest = []
+@app.route('/user/')
+@app.route('/user/<name>')
+def user_route(name=None):
 		
-	return render_template('home-old.html', appname=APPNAME, env_home_run=HOME_RUN,
-							name=name,
-							runners=runners,
-							closest=closest,
-							timestamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
+	return render_template('user.html',
+			timestamp=datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f'))
 
 
 @app.route('/parkrun/', methods=['POST','GET'])
