@@ -10,7 +10,7 @@
 
 {% if current_user.is_authenticated %}
 
-    <h1>Map: {{ rid }} Centre={{ map_centre|safe }}<p>
+    <h1>Map: {{ rid }} {{ current_user.home_run }} Centre={{ map_centre|safe }}<p>
 </h1>
     <div id="map"></div>
     <p>
