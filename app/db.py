@@ -64,10 +64,10 @@ class DBO:
 		for thisrunner in {
 			('184594',  'Ian',      '32:00', 1, 'Bromley'),
 			('185368',  'Matt',     '25:00', 1, 'Bromley'),
-			('4327482', 'Caroline', '34:00', 0, 'Banstead Woods'),
-			('2564629', 'Michael',  '25:00', 0, 'Riddlesdown'),
-			('23656',   'Eileen',   '34:00', 0, 'Clare'),
-			('3158074', 'Sam',      '30:00', 1, None),
+			('4327482', 'CH',       '34:00', 1, 'Banstead Woods'),
+			('2564629', 'MA',       '25:00', 1, 'Riddlesdown'),
+			('23656',   'EA',       '34:00', 1, 'Clare'),
+			('3158074', 'SO',       '30:00', 1, None),
 			
 		}:
 			r = Runner(rid=thisrunner[0],
@@ -96,10 +96,12 @@ class DBO:
 		 		
 		con.commit()
 		for thisuser in {
-			('ian', '184594', 'Bromley', 'BR4 9NZ'),
-			('caroline', '4327482', 'Banstead Woods', None),
+			('ian',  '184594', 'Bromley', 'BR4 9NZ'),
+			('caroline',   '4327482', 'Banstead Woods', None),
 			('matt', '185368', 'Bromley', None),
-			('test')
+			('michael', '2564629', 'Riddlesdown', None),
+			('sam', '3158074', 'Lloyd', None),
+			('eileen', '23656', 'Clare', None)
 		}:
 			u = User(username=thisuser[0], 
 						rid=thisuser[1], 
