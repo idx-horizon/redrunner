@@ -126,6 +126,8 @@ class DBO:
 					)
 			'''
 		)
+		con.commit()
+
 		for link in {
 			('ian', '185368'),
 			('ian', '2564629')
