@@ -24,5 +24,6 @@ flask_login
 flask-sqlalchemy
 flask_migrate
 flask_wtf
+flask-bookstrap
 wtforms
 werkzeug
