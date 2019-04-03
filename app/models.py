@@ -6,10 +6,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class RunnerLink(flaskdb.Model):
-    id = flaskdb.Column(flaskdb.Integer, primary_key=True)
-    user_name = flaskdb.Column(flaskdb.Integer, flaskdb.ForeignKey('user.username'))
-    rid = flaskdb.Column(flaskdb.Integer, flaskdb.ForeignKey('runner.rid'))
-    added_date = flaskdb.Column(flaskdb.DateTime, index=True, default=datetime.utcnow)
+    id          = flaskdb.Column(flaskdb.Integer, primary_key=True)
+    username    = flaskdb.Column(flaskdb.Integer, flaskdb.ForeignKey('user.username'))
+    rid         = flaskdb.Column(flaskdb.Integer, flaskdb.ForeignKey('runner.rid'))
+    added_date  = flaskdb.Column(flaskdb.DateTime, index=True, default=datetime.utcnow)
 
 class Runner(flaskdb.Model):
     rid = flaskdb.Column(flaskdb.String(10), 
