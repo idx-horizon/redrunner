@@ -202,6 +202,7 @@ def runner(id=None):
 							data=pgdata,
 							title=pgtitle,
 							runners=runners,
+							sql=sql,
 							totals={'total': 'TEST', 'year': 2019 })
 
 @app.route('/ele/', methods=['POST','GET'])
