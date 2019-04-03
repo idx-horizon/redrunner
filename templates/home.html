@@ -23,10 +23,8 @@
 		{% for rname, rdist, rlat, rlng, rflag, rtimesrun in markers %}
 			<tr>
 				<td align="center" 
-					{% if rtimesrun|int < 1 %} 
-		   				  id="hilitered"
-		   			{% else %}
-		   				  id="hilitegreen"
+					{% if rtimesrun|int < 1 %} id="hilitered"
+		   			{% else %} id="hilitegreen"
 					{% endif %}>{{ loop.index }}.</td>
 				<td>{{ rname }}</td>
 				<td align="right">{{ rdist }}</td>
