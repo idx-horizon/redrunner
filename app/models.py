@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-class RunnerLink(flaskdb.Model):
+class Runnerlink(flaskdb.Model):
     id          = flaskdb.Column(flaskdb.Integer, primary_key=True)
     username    = flaskdb.Column(flaskdb.Integer, flaskdb.ForeignKey('user.username'))
     rid         = flaskdb.Column(flaskdb.Integer, flaskdb.ForeignKey('runner.rid'))
