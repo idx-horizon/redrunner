@@ -130,7 +130,9 @@ class DBO:
 
 		for link in {
 			('ian', '185368'),
-			('ian', '2564629')
+			('ian', '2564629'),
+			('matt', '185368'),
+			('ian', '185368')
 		}:
 			l = Runnerlink(username=link[0], rid=link[1])
 			flaskdb.session.add(l)
