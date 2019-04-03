@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from app.models import User, Runner
+from app.models import User, Runner, RunnerLink
 from app import flaskdb
 
 class DBO:
@@ -129,7 +129,8 @@ class DBO:
 			('ian', '185368'),
 			('ian', '2564629')
 		}:
-			l in RunnerLink(username=link[0], rid=link[1])
+			l = RunnerLink(username=link[0], rid=link[1])
+			flaskdb.session.add(u)
 
 		con.commit()
 
