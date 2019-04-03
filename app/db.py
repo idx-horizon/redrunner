@@ -66,8 +66,8 @@ class DBO:
 			('185368',  'Matt',     '25:00', 1, 'Bromley'),
 			('4327482', 'CH',       '34:00', 1, 'Banstead Woods'),
 			('2564629', 'MA',       '25:00', 1, 'Riddlesdown'),
-			('23656',   'EA',       '34:00', 1, 'Clare'),
-			('3158074', 'SO',       '30:00', 1, None),
+			('23656',   'EA',       '34:00', 1, 'Clair'),
+			('3158074', 'SO',       '30:00', 1, 'Shorne Woods'),
 			
 		}:
 			r = Runner(rid=thisrunner[0],
@@ -100,7 +100,7 @@ class DBO:
 			('caroline',   '4327482', 'Banstead Woods', None),
 			('matt', '185368', 'Bromley', None),
 			('michael', '2564629', 'Riddlesdown', None),
-			('sam', '3158074', 'Lloyd', None),
+			('sam', '3158074', 'Shorne Woods', None),
 			('eileen', '23656', 'Clair', None)
 		}:
 			u = User(username=thisuser[0], 

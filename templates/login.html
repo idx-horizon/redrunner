@@ -1,15 +1,15 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-        {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages() %}
         {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li style="color: red">{{ message }}</li>
-            {% endfor %}
-        </ul>
+            <ul>
+                {% for message in messages %}
+                <li style="color: red">{{ message }}</li>
+                {% endfor %}
+            </ul>
         {% endif %}
-        {% endwith %}
+    {% endwith %}
 
 {% block content %}
     <h1>{{ title }}</h1>
@@ -35,6 +35,7 @@
        </div>
         <P>
     </form>
+<div><br</div>
 {% endblock %}
 
 
