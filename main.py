@@ -193,7 +193,8 @@ def runner(id=None):
 				where username = "
 				''' + current_user.username + '"'
 			pgdata = mydb.dcur.execute(sql).fetchall()
-			
+			print('** Linked runners',pgdata)
+			print(sql)
 			pgtitle = 'All Runners'
 			
 	return render_template('runner.html',
