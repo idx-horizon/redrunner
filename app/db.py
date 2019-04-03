@@ -95,6 +95,7 @@ class DBO:
 		)
 		 		
 		con.commit()
+
 		for thisuser in {
 			('ian',  '184594', 'Bromley', 'BR4 9NZ'),
 			('caroline',   '4327482', 'Banstead Woods', None),
@@ -130,9 +131,9 @@ class DBO:
 			('ian', '2564629')
 		}:
 			l = RunnerLink(username=link[0], rid=link[1])
-			flaskdb.session.add(u)
+			flaskdb.session.add(l)
 
-		con.commit()
+		flaskdb.session.commit()
 
 		con.execute('''
 			CREATE TABLE reference (
