@@ -62,12 +62,12 @@ class DBO:
 		con.commit()
 		
 		for thisrunner in {
-			('184594',  'Ian',      '32:00', 1, 'Bromley'),
-			('185368',  'Matt',     '25:00', 1, 'Bromley'),
-			('4327482', 'CH',       '34:00', 1, 'Banstead Woods'),
-			('2564629', 'MA',       '25:00', 1, 'Riddlesdown'),
-			('23656',   'EA',       '34:00', 1, 'Clair'),
-			('3158074', 'SO',       '30:00', 1, 'Shorne Woods'),
+			('184594',  'Ian',          '32:00', 1, 'Bromley'),
+			('185368',  'Matt',         '25:00', 1, 'Bromley'),
+			('4327482', 'Caroline',     '34:00', 1, 'Banstead Woods'),
+			('2564629', 'Michael',      '25:00', 1, 'Riddlesdown'),
+			('23656',   'Eileen',       '34:00', 1, 'Clair'),
+			('3158074', 'Sam',          '30:00', 1, 'Shorne Woods'),
 			
 		}:
 			r = Runner(rid=thisrunner[0],
@@ -129,10 +129,17 @@ class DBO:
 		con.commit()
 
 		for link in {
+			('ian', '184594'), #self
 			('ian', '185368'),
 			('ian', '2564629'),
-			('matt', '185368'),
-			('ian', '185368')
+			('ian', '4327482')
+			('matt', '185368'), #self
+			('matt', '184594'),
+			('caroline', '4327482'), #self
+			('caroline', '184594'),
+			('caroline', '23656'),
+			('michael', '2564629'), #self
+			('eileen', '23656') #self
 		}:
 			l = Runnerlink(username=link[0], rid=link[1])
 			flaskdb.session.add(l)
