@@ -117,6 +117,23 @@ class DBO:
 		print('** Users: ', User.query.all())
 
 		con.execute('''
+			CREATE TABLE runnerlink (
+					id integer PRIMARY KEY, 
+					username char(50) not null,
+					rid char(10) not null,
+					added_date CHAR(30)	
+					)
+			'''
+		)
+		for link in {
+			('ian', '185368'),
+			('ian', '2564629'),
+		}:
+			l in RunnerLink(username=link[0], rid=link[1])
+
+		con.commit()
+
+		con.execute('''
 			CREATE TABLE reference (
 					key CHAR(20),
 					subkey CHAR(20),
