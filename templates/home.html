@@ -2,16 +2,16 @@
 {% include "_menubar.html" %}
 <style>
       /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
+   /*   #map {*/
+   /*     height: 400px;  /* The height is 400 pixels */
+   /*     width: 100%;  /* The width is the width of the web page */
+   /*    }*/
 </style>
 
 {% if current_user.is_authenticated %}
 
     <h1>Home Run: {{ current_user.home_run }}</h1>
-    <div id="map"></div>
+    <div id="redmap"></div>
     <p>
 	<table style="width:70%;">
 		<tr>
