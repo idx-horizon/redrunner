@@ -101,7 +101,7 @@ class DBO:
 			('matt', '185368', 'Bromley', None),
 			('michael', '2564629', 'Riddlesdown', None),
 			('sam', '3158074', 'Lloyd', None),
-			('eileen', '23656', 'Clare', None)
+			('eileen', '23656', 'Clair', None)
 		}:
 			u = User(username=thisuser[0], 
 						rid=thisuser[1], 
