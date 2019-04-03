@@ -190,8 +190,7 @@ def runner(id=None):
 				select * from runnerlink as L 
 				left join runner as R 
 					on (L.rid=R.rid) 
-				where username = "
-				''' + current_user.username + '"'
+				where username = "''' + current_user.username + '"'
 			pgdata = mydb.dcur.execute(sql).fetchall()
 			print('** Linked runners',pgdata)
 			print(sql)
