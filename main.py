@@ -54,6 +54,7 @@ def datetimefilter(value, format='%d-%b-%Y'):
 	return response
 	
 app.jinja_env.filters['datetimefilter'] = datetimefilter
+request.session.clear()
 		
 @app.errorhandler(404)
 def error_404(error):
