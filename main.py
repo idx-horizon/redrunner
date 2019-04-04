@@ -59,7 +59,6 @@ request.session.clear()
 @app.errorhandler(404)
 def error_404(error):
 	return redirect('/error/404')
-#	return make_response(jsonify({'error': '404 - Not found'}), 404)
 
 @app.errorhandler(500)
 def handle_error_route(error):
@@ -114,7 +113,7 @@ def home(name=None):
 	
 	centre = list(geo.get_coordinates(h,None))
 
-	print('** Home for {} {} #{}'.format(rid, h, len(runner_data)))
+	#print('** Home for {} {} #{}'.format(rid, h, len(runner_data)))
 		
 	data = geo.closest_runs(h, top=25, runner_data=runner_data)
 	markers = [list(d.values()) for d in data]
@@ -204,8 +203,7 @@ def runner(id=None):
 							data=pgdata,
 							title=pgtitle,
 							runners=runners,
-							sql=sql,
-							totals={'total': 'TEST', 'year': 2019 })
+							sql=sql)
 
 @app.route('/ele/', methods=['POST','GET'])
 #@app.route('/ele/<run>')
@@ -291,7 +289,5 @@ if __name__ == '__main__':
 					
 	port = int(os.environ.get("RR_PORT", 8000))
 
-	#print(rd['184594'])
-	#print(type(rd['184594']))
 	runapp(port,True)
 

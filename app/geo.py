@@ -65,7 +65,7 @@ def closest_runs(run=None, postcode=None, top=10, runner_data=None):
 		print('ERROR: must supply either run or postcode')
 		return
 		
-	print('\nClosest {} runs from {} {}'.format(top, from_name, from_coord))
+	#print('\nClosest {} runs from {} {}'.format(top, from_name, from_coord))
 	for m in tree.iter('e'):
 		p = m.get('m')
 		la, lo = get_coordinates(p,root)
@@ -89,11 +89,11 @@ def closest_runs(run=None, postcode=None, top=10, runner_data=None):
 			pass
 	
 	top_list = sorted(dist.items(), key=lambda i: i[1]['distance'])[:top+offset]
-	print('**', top_list)
+	# print('**', top_list)
 	ret_list = []	
 	for ix, w in enumerate(top_list[offset:]):
 		#print(w[1]['distance'])
-		print('{:>3}. {:<30} distance {:.2f} (m)'.format(ix+1, w[0], w[1]['distance']))
+	#	print('{:>3}. {:<30} distance {:.2f} (m)'.format(ix+1, w[0], w[1]['distance']))
 		ret_list.append({'name': w[0], 
 						 'distance': w[1]['distance'], 
 						 'lat': w[1]['lat'], 
@@ -103,11 +103,4 @@ def closest_runs(run=None, postcode=None, top=10, runner_data=None):
 						)
 		
 	return ret_list
-	#return top_list[offset:]
 	
-#
-#closest_runs(run='Bromley',top=5)
-#closest_runs(postcode='BR4 9NY',top=20)
-#closest_runs(postcode='CR5 3AL',top=20)
-
-#closest_runs(run='Banstead Woods',top=10)
