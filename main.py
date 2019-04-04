@@ -183,18 +183,20 @@ def parkrun(id=None):
 def runner(id=None):
 	print('**', request.path)
 	with mydb:
-	#		pgdata = mydb.dcur.execute('select * from runner where public_flag = ' + 
-	#				str(public_flag) + ' order by rid').fetchall()
-	#		pgdata = '''
+		if current_user.is_authenticated:
+			pgtitle = current_user.username + "'s runners"
 			sql='''
 				select * from runnerlink as L 
 				left join runner as R 
 					on (L.rid=R.rid) 
 				where username = "''' + current_user.username + '"'
-			pgdata = mydb.dcur.execute(sql).fetchall()
-			print('** Linked runners',pgdata)
-			print(sql)
-			pgtitle = 'All Runners'
+		else:
+			sql = '''
+					select * from runner where public_flag = 1 order by rid');
+				'''
+			pgtitle = "Public runners"
+
+		pgdata = mydb.dcur.execute(sql).fetchall()
 			
 	return render_template('runner.html',
 						    appname=APPNAME, env_home_run=HOME_RUN,

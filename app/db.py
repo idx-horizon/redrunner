@@ -63,11 +63,11 @@ class DBO:
 		
 		for thisrunner in {
 			('184594',  'Ian',          '32:00', 1, 'Bromley'),
-			('185368',  'Matt',         '25:00', 1, 'Bromley'),
-			('4327482', 'Caroline',     '34:00', 1, 'Banstead Woods'),
-			('2564629', 'Michael',      '25:00', 1, 'Riddlesdown'),
-			('23656',   'Eileen',       '34:00', 1, 'Clair'),
-			('3158074', 'Sam',          '30:00', 1, 'Shorne Woods'),
+			('185368',  'Matt',         '25:00', 0, 'Bromley'),
+			('4327482', 'Caroline',     '34:00', 0, 'Banstead Woods'),
+			('2564629', 'Michael',      '25:00', 0, 'Riddlesdown'),
+			('23656',   'Eileen',       '34:00', 0, 'Clair'),
+			('3158074', 'Sam',          '30:00', 0, 'Shorne Woods'),
 			
 		}:
 			r = Runner(rid=thisrunner[0],
