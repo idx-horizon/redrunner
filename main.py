@@ -191,7 +191,10 @@ def runner(id=None):
 				where username = "''' + current_user.username + '"'
 		else:
 			sql = '''
-					select * from runner where public_flag = 1 order by rid');
+					SELECT * from runner 
+					WHERE 
+						public_flag = 1 
+					ORDER BY rid;
 				'''
 			pgtitle = "Public runners"
 
