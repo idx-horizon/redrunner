@@ -1,3 +1,4 @@
+APP=red
 docker system prune -f
 
 echo Stopping container red
