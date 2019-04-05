@@ -63,42 +63,23 @@ def run(runner, LOCAL_DATA, mydb=None):
 			b = json.load(fh)
 		return b, b['1']['title'].strip() +' (local)'
 #		return b, b['1']['title'].strip() +' (local)', None
-	else:
-		print('No local data for runner', runner, '- getting data from website')
+#	else:
+#		print('No local data for runner', runner, '- getting data from website')
 		
 	link ='http://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber=' + runner + '&eventNumber=0'
 
 	headers  =  {
 		'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
 		}	
-
-#	print(link)
-
+		
 	session = requests.Session()
 	session.headers.update(headers)
 	sr = session.get(link)
-#	print('Response from get: ', sr.status_code, 'Length of response:', len(sr.text), '\n')			
 	b  = extract_tables(sr.text)
 	
 	for t in b:
 		cols = b[t]['number_cols']
 		rows = int(b[t]['data_count'] / cols)
-#		max_width = len(max(b[t]['data'],key=len)) + 2
-#		output_format = '{:<' + str(max_width) + '}'
-#		
-#		print('Table:', b[t]['caption'], b[t]['headers'], 'Columns:', cols, 'Rows:', rows)
-#		line = ''
-#		for h in b[t]['headers']:
-#			line += output_format.format(h)
-#		print(line)
-#		
-#		for i in range(0,rows):			
-#			line = ''		
-#			for d in b[t]['data'][cols*i : (cols*i)+cols]: 
-#				line += output_format.format(d)
-#			#print(b[t]['data'][cols*i : (cols*i)+cols])
-#			#print(line)
-#		print('\n')
 	
 		b[t]['rowdata'] =[]
 		for i in get_chunk_as_tuples(b[t]['data'],b[t]['number_cols']):
@@ -112,7 +93,6 @@ def run(runner, LOCAL_DATA, mydb=None):
 	return b,b['1']['title']
 
 def saverunner(data, runnerid, mydb):
-#	print('start save to db')
 	with mydb:
 		print('** Saving {} into reference'.format(runnerid))
 		store_data = json.dumps(data)
@@ -127,19 +107,19 @@ def saverunner(data, runnerid, mydb):
 
 
 if __name__ == '__main__':
-
-	current_runner = 0
-	runners = ['184594', '185368', '4327482']
-	#print(os.getcwd(), os.environ['HOME'])
+	pass
+#	current_runner = 0
+#	runners = ['184594', '185368', '4327482']
+#	#print(os.getcwd(), os.environ['HOME'])
 	
 	#LOCAL_DATA = os.path.join(os.environ['HOME'], 'Documents/_DATA')
-	LOCAL_DATA = os.path.join('/private/var/mobile/Library/Mobile Documents/iCloud~com~omz-software~Pythonista3/Documents', '_DATA')
-	print(LOCAL_DATA)
-	data, title, sr = run(runners[current_runner], LOCAL_DATA)
-	data, title,sr = run(runners[current_runner], LOCAL_DATA)
-		
-	if data:
-		MyVw(data, title)
-		pass
+#	LOCAL_DATA = os.path.join('/private/var/mobile/Library/Mobile Documents/iCloud~com~omz-software~Pythonista3/Documents', '_DATA')
+#	print(LOCAL_DATA)
+#	data, title, sr = run(runners[current_runner], LOCAL_DATA)
+#	data, title,sr = run(runners[current_runner], LOCAL_DATA)
+#		
+#	if data:
+#		MyVw(data, title)
+#		pass
 	
 
