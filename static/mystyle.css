@@ -175,15 +175,15 @@ body {
 }
 
 
-input[class="button"], button[type=submit] {
+/* input[class="button"], button[type=submit] {
 	padding: 5px 15px;
-	background: red /* #4CAF50 */;
+	background: #4CAF50;
 	border: 0 none;
 	cursor: pointer;
 	border-radius: 10px;
-}
+} */
 
-.button {
+.button, button[type=submit], input[class="button"], input[class=button]  {
 /*  float: left;            */
 /* border: 1px solid green; */
   background-color: #4CAF50; /* Green */
