@@ -183,18 +183,18 @@ body {
 	border-radius: 10px;
 } */
 
-.button, button[type=submit], input[class="button"], input.mybutton  {
+.button, button[type=submit], input[class="mybutton"], input.mybutton , .mybutton {
 /*  float: left;            */
 /* border: 1px solid green; */
   background-color: #4CAF50; /* Green */
   border: 1px solid green;
   color: white;
   padding: 13px 28px;
-  min-width: 120px;
+  min-width: 110px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 14px;
+  font-size: 13px;
   cursor: pointer;
   /*float: left */;
 }
