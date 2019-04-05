@@ -183,7 +183,7 @@ body {
 	border-radius: 10px;
 } */
 
-.button, button[type=submit], input[class="button"], input[class=mybutton]  {
+.button, button[type=submit], input[class="button"], input.mybutton  {
 /*  float: left;            */
 /* border: 1px solid green; */
   background-color: #4CAF50; /* Green */
