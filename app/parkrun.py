@@ -73,7 +73,7 @@ def run(runner, LOCAL_DATA, mydb=None):
 		}	
 		
 	session = requests.Session()
-	session.headers.update(app.config['USER_AGENT')
+	session.headers.update(app.config['USER_AGENT'])
 	sr = session.get(link)
 	b  = extract_tables(sr.text)
 	
