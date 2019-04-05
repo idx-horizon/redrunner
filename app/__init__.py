@@ -17,6 +17,7 @@ login = LoginManager(app)
 login.login_view = 'login'
 
 
+
 THISDB = app.config['REPOSITORY']
 APPNAME = app.config['APPNAME']
 THISCONFIG = app.config
