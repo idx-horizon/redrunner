@@ -89,7 +89,7 @@ def login():
             next_page = url_for('home')
         return redirect(next_page)
 
-    return render_template('login.html', title='Login', form=form, config=app.config)
+    return render_template('login.html', title='Login', form=form)
 
 @app.route('/logout')
 def logout():
