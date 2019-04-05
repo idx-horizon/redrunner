@@ -74,6 +74,11 @@ table, td, th {
 	text-decoration: none;
 	padding: 5px;
 }
+
+a {
+	text-decoration: none;
+}
+
 body {
 	background-color: lightgrey;
 }
@@ -174,7 +179,7 @@ button[type=submit] {
 	background: #4CAF50;
 	border: 0 none;
 	cursor: pointer;
-	/* border-radius: 10px */;
+	border-radius: 10px;
 }
 
 .button {
