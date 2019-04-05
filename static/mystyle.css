@@ -71,6 +71,7 @@ th {
 table, td, th {
 	border: 1pt solid black;
 	vertical-align: center;
+	text-decoration: none;
 	padding: 5px;
 }
 body {
@@ -173,7 +174,7 @@ button[type=submit] {
 	background: #4CAF50;
 	border: 0 none;
 	cursor: pointer;
-	border-radius: 10px;
+	/* border-radius: 10px */;
 }
 
 .button {
