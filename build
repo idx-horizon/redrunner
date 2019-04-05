@@ -1,10 +1,10 @@
 APP=red
 docker system prune -f
 
-echo Stopping container red
+echo Stopping container $APP
 docker container stop $APP
 
-echo Removing container red
+echo Removing container $APP
 
 docker container rm $APP
 git pull
@@ -12,10 +12,8 @@ curl -O https://www.parkrun.com/wp-content/themes/parkrun/xml/geo.xml
 
 docker build --tag=redrunner .
 
-
 docker run -d -p 5000:5000 --name $APP redrunner
 
 echo Copying master repository and keys
-
 docker cp gmap.key red:/redrunner/resources/gmap.key
 docker cp masterREPOSITORY.db red:/redrunner/REPOSITORY.db
