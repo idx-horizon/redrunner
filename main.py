@@ -220,8 +220,7 @@ def elevation(run=None):
 
 
 def runapp(port,debug=True):
-	#port = int(os.environ.get("PORT", 80))
-	
+	print('** Port: ', port)
 	app.run(host='0.0.0.0') #app.run(port=port, debug=debug)
 	logout_user()
 	
@@ -269,21 +268,11 @@ if __name__ == '__main__':
 
 		az_done = count_by(rd[runner['rid']], 'az')
 		missing = [l for l in string.ascii_uppercase if l not in az_done.keys()]
-#		print('\n** {} completed {} \'A-Z\' letters. Still to complete {}\n\t {}'.
-#					format(runner['fullname'], len(az_done), len(missing), missing))
 					
 		rdtotals[runner['rid']] = {}
 		for total_type in {'year', 'month', 'minute', 'course', 'az'}:
 			rdtotals[runner['rid']][total_type] = count_by(rd[runner['rid']], total_type)
-			#for t in sorted(rdtotals[runner['rid']][total_type],reverse=True):
-			#	print(t, rdtotals[runner['rid']][total_type][t])
-#		print('***', {l for l in string.ascii_uppercase if l not in az_done.keys()})
 		rdtotals[runner['rid']]['missing'] = {'\n'.join(missing): len(missing)}
-
-#	chart_data = {'Ian':  rdtotals['184594']['year'],
-#				  'Matt': rdtotals['185368']['year']}
-#
-#	parkcharts.makechart(chart_data, './static/mygraph.png', show=False)
 	
 					
 	port = int(os.environ.get("RR_PORT", 8000))

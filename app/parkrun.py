@@ -62,15 +62,12 @@ def run(runner, LOCAL_DATA, mydb=None):
 		with open(runner_datafile,'r') as fh:
 			b = json.load(fh)
 		return b, b['1']['title'].strip() +' (local)'
-#		return b, b['1']['title'].strip() +' (local)', None
-#	else:
-#		print('No local data for runner', runner, '- getting data from website')
 		
 	link ='http://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber=' + runner + '&eventNumber=0'
 
 	headers  =  {
-		'User-Agent': THISCONFIG['USER_AGENT']
-#		'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
+#		'User-Agent': THISCONFIG['USER_AGENT']
+		'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
 		}	
 		
 	session = requests.Session()
