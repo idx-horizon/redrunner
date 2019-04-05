@@ -10,7 +10,6 @@ from collections import Counter
 from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for, session
 
 from flask_login import login_user, logout_user, current_user, login_required
-#from flask_login import LoginManager
 
 from werkzeug.urls import url_parse
 
@@ -90,7 +89,7 @@ def login():
             next_page = url_for('home')
         return redirect(next_page)
 
-    return render_template('login.html', title='Login', form=form)
+    return render_template('login.html', title='Login', form=form, config=app.config)
 
 @app.route('/logout')
 def logout():
