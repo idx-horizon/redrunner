@@ -7,7 +7,7 @@ import string
 from collections import Counter
 
 
-from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for
+from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for, session
 
 from flask_login import login_user, logout_user, current_user, login_required
 #from flask_login import LoginManager
@@ -111,8 +111,6 @@ def home(name=None):
 		runner_data = []
 	
 	centre = list(geo.get_coordinates(h,None))
-
-	#print('** Home for {} {} #{}'.format(rid, h, len(runner_data)))
 		
 	data = geo.closest_runs(h, top=25, runner_data=runner_data)
 	markers = [list(d.values()) for d in data]
