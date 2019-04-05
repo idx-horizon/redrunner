@@ -11,5 +11,11 @@ git pull
 curl -O https://www.parkrun.com/wp-content/themes/parkrun/xml/geo.xml
 
 docker build --tag=redrunner .
-docker run -d -p 5000:5000 --name $APP redrunner
+
+echo Copying master repository and keys
+
 docker cp gmap.key red:/redrunner/resources/gmap.key
+docker cp masterREPOSITORY.db red:/redrunner/REPOSITORY.db
+
+docker run -d -p 5000:5000 --name $APP redrunner
+
