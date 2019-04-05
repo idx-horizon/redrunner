@@ -69,12 +69,12 @@ def run(runner, LOCAL_DATA, mydb=None):
 	link ='http://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber=' + runner + '&eventNumber=0'
 
 	headers  =  {
-		'User-Agent': app.config['USER_AGENT']
+		'User-Agent': THISCONFIG['USER_AGENT']
 #		'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
 		}	
 		
 	session = requests.Session()
-	session.headers.update(app.config['USER_AGENT'])
+	session.headers.update(headers)
 	sr = session.get(link)
 	b  = extract_tables(sr.text)
 	

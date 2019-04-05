@@ -19,6 +19,7 @@ login.login_view = 'login'
 
 THISDB = app.config['REPOSITORY']
 APPNAME = app.config['APPNAME']
+THISCONFIG = app.config
 
 flaskdb = SQLAlchemy(app)
 migrate = Migrate(app, flaskdb)
