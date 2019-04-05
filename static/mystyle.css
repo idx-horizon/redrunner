@@ -175,9 +175,9 @@ body {
 }
 
 
-input[class="button"] button[type=submit] {
+input[class="button"], button[type=submit] {
 	padding: 5px 15px;
-	background: #4CAF50;
+	background: red /* #4CAF50 */;
 	border: 0 none;
 	cursor: pointer;
 	border-radius: 10px;
