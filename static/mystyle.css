@@ -184,19 +184,17 @@ body {
 } */
 
 .button, button[type=submit], input[class="mybutton"], input.mybutton , .mybutton {
-/*  float: left;            */
-/* border: 1px solid green; */
+  /*  float: left;   */
   background-color: #4CAF50; /* Green */
   border: 1px solid green;
   color: white;
   padding: 13px 28px;
-  min-width: 110px;
+  min-width: 120px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 13px;
   cursor: pointer;
-  /*float: left */;
 }
 
 
@@ -215,7 +213,7 @@ body {
 }
 
 .btn-group .button:not(:last-child) {
-  border-right: none; /* Prevent double borders */
+  /* border-right: none; */ /* Prevent double borders */
 }
 
 .btn-group .button:hover {
