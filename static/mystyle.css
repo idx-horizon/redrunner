@@ -174,7 +174,8 @@ body {
   display: block;
 }
 
-button[type=submit] {
+
+input[class="button"] button[type=submit] {
 	padding: 5px 15px;
 	background: #4CAF50;
 	border: 0 none;
