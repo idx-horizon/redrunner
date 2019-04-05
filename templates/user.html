@@ -3,9 +3,20 @@
 
 <h1>User</h1>
 {% if current_user.is_authenticated %}
-	User name: {{ current_user.username|title }} <P>
-	Home run: {{ current_user.home_run|title }} <P>
-	Home postcode: {{ current_user.home_postcode }} <P>
+	<table>
+		<tr>
+			<td>User name</td>
+			<td>{{ current_user.username|title }}</td>
+		</tr>
+		<tr>
+			<td>Home run</td>
+			<td>{{ current_user.home_run|title }}</td>
+		</tr>
+		<tr>
+			<td>Home postcode</td>
+			<td>{{ current_user.home_postcode }}</td>
+		</tr>
+	</table>
 {% else %}
 	<P>
 	<b>You are not logged in. To continue <a href = '/login'>login</a></b>
