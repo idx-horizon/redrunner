@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from app.models import User, Runner, Runnerlink
+from app.models import User, Runner, Runnerlink, Reference
 from app import flaskdb
 
 class DBO:
@@ -156,6 +156,13 @@ class DBO:
 			'''
 		)
 		con.commit()
+		
+		with open('ele.dat','r') as fh:
+			ele = fh.read()
+		rec = Reference(key='elevations',value=ele)		
+		flaskdb.session.add(rec)
+		flaskdb.session.commit()
+			
 					
 		print('** Created DB:', self.dbname)
 		

@@ -4,6 +4,11 @@ from app import flaskdb, login
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+class Reference(flaskdb.Model):
+    key         = flaskdb.Column(flaskdb.String(20))
+    subkey      = flaskdb.Column(flaskdb.String(20))
+    value       = flaskdb.Column(flaskdb.Blob) 
+    modified_date  = flaskdb.Column(flaskdb.DateTime, index=True, default=datetime.utcnow)
 
 class Runnerlink(flaskdb.Model):
     id          = flaskdb.Column(flaskdb.Integer, primary_key=True)

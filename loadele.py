@@ -1,6 +1,5 @@
 from flask import Flask
 from app.utils import get_external_elevations, check_url_status
-#import app.db
 from app.db import DBO
 import datetime
 import json
