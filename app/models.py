@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class Reference(flaskdb.Model):
     key         = flaskdb.Column(flaskdb.String(20))
     subkey      = flaskdb.Column(flaskdb.String(20))
-    value       = flaskdb.Column(flaskdb.Blob) 
+    value       = flaskdb.Column(flaskdb.BLOB) 
     modified_date  = flaskdb.Column(flaskdb.DateTime, index=True, default=datetime.utcnow)
 
 class Runnerlink(flaskdb.Model):
