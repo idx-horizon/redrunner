@@ -5,6 +5,7 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class Reference(flaskdb.Model):
+    id          = flaskdb.Column(flaskdb.Integer, primary_key=True)
     key         = flaskdb.Column(flaskdb.String(20))
     subkey      = flaskdb.Column(flaskdb.String(20))
     value       = flaskdb.Column(flaskdb.BLOB) 

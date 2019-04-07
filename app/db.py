@@ -148,6 +148,7 @@ class DBO:
 
 		con.execute('''
 			CREATE TABLE reference (
+					id integer PRIMARY KEY, 
 					key CHAR(20),
 					subkey CHAR(20),
 					value BLOB,
