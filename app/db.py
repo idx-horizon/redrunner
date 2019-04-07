@@ -160,7 +160,7 @@ class DBO:
 		
 		with open('resources/elevations.dat','r') as fh:
 			ele = fh.read()
-		rec = Reference(key='elevations',value=ele)		
+		rec = Reference(key='elevations',value=ele.encode())		
 		flaskdb.session.add(rec)
 		flaskdb.session.commit()
 			
