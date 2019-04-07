@@ -17,7 +17,7 @@ mydb = DBO(THISDB)
 with mydb:
     d = get_external_elevations(app)
     store = json.dumps(d)
-    mydb.cur.execute('INSERT into reference values (?,?,?,?)',
+    mydb.cur.execute('INSERT into reference (key, subkey, value, modified_date) values (?,?,?,?)',
                            ('elevations',
                             ''
                             ,store,
