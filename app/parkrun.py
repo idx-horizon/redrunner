@@ -96,7 +96,7 @@ def saverunner(data, runnerid, mydb):
 		store_data = json.dumps(data)
 		mydb.cur.execute('delete from reference where key=? and subkey=?',
 										 ('runner', runnerid))
-		mydb.cur.execute('INSERT into reference values (?,?,?,?)', 
+		mydb.cur.execute('INSERT into reference (key, subkey, value, modified_date) values (?,?,?,?)', 
 											('runner', 
 											  runnerid, 
 											  store_data, 
