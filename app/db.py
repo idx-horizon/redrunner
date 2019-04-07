@@ -158,11 +158,11 @@ class DBO:
 		)
 		con.commit()
 		
-	#	with open('ele.dat','r') as fh:
-	#		ele = fh.read()
-	#	rec = Reference(key='elevations',value=ele)		
-	#	flaskdb.session.add(rec)
-	#	flaskdb.session.commit()
+		with open('resources/elevations.dat','r') as fh:
+			ele = fh.read()
+		rec = Reference(key='elevations',value=ele)		
+		flaskdb.session.add(rec)
+		flaskdb.session.commit()
 			
 					
 		print('** Created DB:', self.dbname)
