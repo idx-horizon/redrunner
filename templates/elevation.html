@@ -3,7 +3,7 @@
 
 <h2>Number of runs listed: {{ count }}
 <form action='/ele/' method="post" name="form">
-	<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter" 
+	<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter", autofocus=True, 
 	placeholder="(filter by)" value="{{ request.form['filter'] }}"></input>
 	<button type="submit" name="filter" value="Filter">Filter</button>
 </form>
