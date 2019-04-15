@@ -4,6 +4,10 @@
 <h1>User</h1>
 {% if current_user.is_authenticated %}
 	<table>
+		<th>
+			<td>Property</td>
+			<td>Value</td>
+		</th>
 		<tr>
 			<td>User name</td>
 			<td>{{ current_user.username|title }}</td>

@@ -73,6 +73,9 @@
                 map: map,
                 label: (i+1).toString() /* labels[labelindex++ % labels.length] */
               });
+             marker.addListener('click', function() {
+   				 infowindow.open(marker.get('map'), marker);
+  			  });
         }
     }
 </script>
