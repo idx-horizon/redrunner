@@ -72,7 +72,10 @@
                 icon: image,
                 map: map,
                 label: (i+1).toString() /* labels[labelindex++ % labels.length] */
-              });
+             
+             var infowindow = new google.maps.InfoWindow({
+    			content: secretMessage
+  			  });
              marker.addListener('click', function() {
    				 infowindow.open(marker.get('map'), marker);
   			  });
