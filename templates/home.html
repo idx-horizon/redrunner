@@ -74,7 +74,7 @@
                 label: (i+1).toString() /* labels[labelindex++ % labels.length] */
              
              var infowindow = new google.maps.InfoWindow({
-    			content: 'test-' + locations[i][0]
+    			content: locations[i][0]
   			  });
              marker.addListener('click', function() {
    				 infowindow.open(marker.get('map'), marker);
