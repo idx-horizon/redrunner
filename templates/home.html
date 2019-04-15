@@ -73,13 +73,14 @@
                 map: map,
                 label: (i+1).toString() /* labels[labelindex++ % labels.length] */
              });
+          };
              var infowindow = new google.maps.InfoWindow({
     			content: locations[i][0]
   			  }); 
              marker.addListener('click', function() {
    				 infowindow.open(marker.get('map'), marker);
   			  });
-        }
+        
     }
 </script>
 
