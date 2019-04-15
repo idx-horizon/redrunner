@@ -111,7 +111,7 @@ def home(name=None):
 	
 	centre = list(geo.get_coordinates(h,None))
 		
-	data = geo.closest_runs(h, top=25, runner_data=runner_data)
+	data = geo.closest_runs(h, top=50, runner_data=runner_data)
 	markers = [list(d.values()) for d in data]
 	return render_template('home.html', 
 						api_key=api_key, 
