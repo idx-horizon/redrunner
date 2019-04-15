@@ -197,9 +197,9 @@ body {
   cursor: pointer;
 }
 
-input[type="text"]
+input[type="text"], input[type="password"]
 {
-    font-size:24px;
+    font-size:20px;
 }
 
 .btn-group .button {
