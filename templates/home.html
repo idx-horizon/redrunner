@@ -73,8 +73,8 @@
              });
 
 			var infowindow = new google.maps.InfoWindow({ 
-				content: '<div>(i+1).toString() + '. <B>' + locations[i][0] +
-						'</B><P>{{current_user.username}}</div>'
+				content: '<div>' + (i+1).toString() + '. <B>' + locations[i][0] +
+						'</B><P>{{ current_user.username }}</div>'
 //				content: '{% include "_map_popup.html" %}'
 				});
 
