@@ -73,7 +73,8 @@
              });
 
 			var infowindow = new google.maps.InfoWindow({ 
-				content: (i+1).toString() + '. ' + locations[i][0]
+				content: (i+1).toString() + '. <B>' + locations[i][0] +
+						'</B> test'
 				});
 
 			//creates an infowindow 'key' in the marker.
@@ -81,7 +82,7 @@
 
 			//finally call the explicit infowindow object
 			marker.addListener('click', function() {
-				return this.infowindow.open(map, this);
+				return infowindow.open(map, this);
 			});
 	  /*        
              marker.addListener('click', function() {
