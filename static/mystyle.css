@@ -8,7 +8,7 @@
 }
 
 .select-selected {
-  background-color: DodgerBlue;
+  background-color: #4CAF50;
 }
 
 /* Style the arrow inside the select element: */
@@ -41,7 +41,7 @@
 /* Style items (options): */
 .select-items {
   position: absolute;
-  background-color: DodgerBlue;
+  background-color: #4CAF50;
   top: 100%;
   left: 0;
   right: 0;
