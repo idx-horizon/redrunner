@@ -4,11 +4,13 @@
 {% if current_user.is_authenticated %}
 
     <h1>Home Run: {{ current_user.home_run }}</h1>
-    <select name="Show">
-  <option value="all">All</option>
-  <option value="run">Courses not run</option>
-  <option value="not-run">courses run</option>
-	</select>
+    <div class="custom-select" style="width:200px;">
+	    <select name="Show">
+  			<option value="all">All</option>
+  			<option value="run">Courses not run</option>
+  			<option value="not-run">Courses run</option>
+		</select>
+	</div>
     <div id="redmap"></div>
     <p>
 	<table style="width:70%;">
@@ -82,13 +84,8 @@
 
 			//finally call the explicit infowindow object
 			marker.addListener('click', function() {
-				return infowindow.open(map, this);
+				return this.infowindow.open(map, this);
 			});
-	  /*        
-             marker.addListener('click', function() {
-   				 infowindow.open(marker.get('map'), marker);
-  			  });
-  	  */
         }
     }
 </script>
