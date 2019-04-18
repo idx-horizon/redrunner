@@ -74,7 +74,8 @@
 
 			var infowindow = new google.maps.InfoWindow({ 
 				content: '<div>' + (i+1).toString() + '. <B>' + locations[i][0] +
-						'</B><P><P>Test message</div>'
+						'</B><P><P>Times run: ' + locations[i][4].toString() + 
+						'</div>'
 				});
 
 			//creates an infowindow 'key' in the marker.
