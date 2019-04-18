@@ -69,13 +69,12 @@
                 position: new google.maps.LatLng(locations[i][2], locations[i][3]),
                 icon: image,
                 map: map,
-                label: (i+1).toString() /* labels[labelindex++ % labels.length] */
+                label: (i+1).toString()
              });
 
 			var infowindow = new google.maps.InfoWindow({ 
 				content: '<div>' + (i+1).toString() + '. <B>' + locations[i][0] +
-						'</B><P>{{ current_user.username }}</div>'
-//				content: '{% include "_map_popup.html" %}'
+						'</B><P><P>Test message</div>'
 				});
 
 			//creates an infowindow 'key' in the marker.
