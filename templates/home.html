@@ -5,12 +5,14 @@
 
     <h1>Home Run: {{ current_user.home_run }}</h1>
     <div class="custom-select" style="width:200px;">
+    Start of Select
 	    <select name="Show">
   			<option value="all">All</option>
   			<option value="run">Courses not run</option>
   			<option value="not-run">Courses run</option>
 		</select>
 	</div>
+	End of select
     <div id="redmap"></div>
     <p>
 	<table style="width:70%;">
@@ -41,11 +43,8 @@
         
 <script type="text/javascript">
 
-    function initMap() {
+   function initMap() {
       var center = {{ map_centre|safe }};
-      /* var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; */
-      var labelindex = 0;
-      
       var map = new google.maps.Map(
           document.getElementById('redmap'),
           {zoom: 10, 
@@ -95,3 +94,5 @@
 </script>
 <P>    
 {% include "_footer.html" %}
+{% include "customeselect.js" %}
+
