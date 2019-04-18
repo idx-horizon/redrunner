@@ -35,9 +35,10 @@ def dated_url_for(endpoint, **values):
         filename = values.get('filename', None)
         if filename:
         	if filename[-3:].lower() == 'css':
-	            file_path = os.path.join(app.root_path,
-    	                             endpoint, filename)
-        	    values['q'] = int(os.stat(file_path).st_mtime)
+#	            file_path = os.path.join(app.root_path,
+#    	                             endpoint, filename)
+        	    values['q'] = datetime.datetime.now().strftime('%Y%m%d%f')
+        	    #int(os.stat(file_path).st_mtime)
     return url_for(endpoint, **values)
     
 def utility_processor():
