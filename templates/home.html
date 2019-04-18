@@ -61,6 +61,10 @@
       
       var locations = {{ markers|safe }};
       var marker, i;
+      var infowindow = new google.maps.InfoWindow({
+    			/* content: (i+1).toString() + '. ' + locations[i][0] */
+				content: 'Test'
+ 			}); 
 
         for (i = 0; i < locations.length; i++) { 
 	 		var image = '/static/' + locations[i][4] + '.jpeg';
@@ -74,9 +78,6 @@
                 label: (i+1).toString() /* labels[labelindex++ % labels.length] */
              });
           
-             var infowindow = new google.maps.InfoWindow({
-    			content: (i+1).toString() + '. ' + locations[i][0] 
-  			  }); 
              marker.addListener('click', function() {
    				 infowindow.open(marker.get('map'), marker);
   			  });
