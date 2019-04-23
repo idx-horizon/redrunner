@@ -2,7 +2,11 @@
 
 <div class="topnav">
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
-	<a href="/runner" {% if url_for(request.endpoint) == '/runner/' %}class="active"{% endif %}>Runner</a>
+	<a href="/runner" 
+	{% if url_for(request.endpoint) == '/runner/' or 
+		  url_for(request.endpoint) == '/parkrun/' %}
+		class="active"
+	{% endif %}>Runner</a>
 		 
 	<a href="/ele" {% if url_for(request.endpoint) == '/ele/' %}class="active"{% endif %}>Elevations</a>	
 	<div class="topnav-right">
