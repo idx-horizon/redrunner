@@ -4,15 +4,15 @@
 {% if current_user.is_authenticated %}
 
     <h1>Home Run: {{ current_user.home_run }}</h1>
-    <div class="custom-select" style="width:300px; float: right;">
+    <div id="redmap"></div>
+    <div class="custom-select" style="width:300px; float: left;">
 	    <select name="Show">
   			<option value="select">Select</option>
   			<option value="all" selected>All</option>
-  			<option value="run">Courses not run</option>
-  			<option value="not-run">Courses run</option>
+  			<option value="run">Courses run</option>
+  			<option value="not-run">Courses not run</option>
 		</select>
 	</div>
-    <div id="redmap"></div>
     <p>
 	<table style="width:70%;">
 		<tr>

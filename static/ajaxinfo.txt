@@ -1,3 +1,5 @@
-Some new text goes here<P>
-And<P>
-<B>Another</B> line here<P>
+<div>
+    Some new text goes here</P>
+    And</P>
+    <B>Another</B> line here</P>
+</div>
