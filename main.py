@@ -110,6 +110,10 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+@app.route('/ax')
+def ajax():
+	return render_template('ax.html')
+
 @app.route('/home/')
 @app.route('/home/<name>')
 def home(name=None):
