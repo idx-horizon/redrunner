@@ -1,3 +1,0 @@
-Some new text goes here
-And
-<B>Another</B> line here
