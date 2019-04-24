@@ -15,7 +15,7 @@ function loadDoc() {
      document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", {{ url_for('static', filename="ajaxinfo.txt") }}, true);
+  xhttp.open("GET", "{{ url_for('static', filename="ajaxinfo.txt") }}", true);
   xhttp.send();
 }
 
