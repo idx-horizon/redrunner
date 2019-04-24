@@ -6,9 +6,6 @@
   <h2>Let AJAX change this text</h2>
   <button type="button" onclick="loadDoc()">Change Content</button>
 </div>
-
-</body>
-</html>
 <script>
 
 function loadDoc() {
@@ -18,8 +15,11 @@ function loadDoc() {
      document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.open("GET", {{ url_for('static', filename="ajaxinfo.txt"), true);
   xhttp.send();
 }
 
 </script>
+
+</body>
+</html>
