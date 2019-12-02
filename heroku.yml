@@ -3,8 +3,7 @@ build:
     web: Dockerfile
 release:
   command:
-    ./deployment_tasks.sh
-  image: web
+    - ./deployment_tasks.sh
 run:
   web: python main.py
 
