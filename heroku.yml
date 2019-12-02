@@ -2,5 +2,5 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: bundle exec red
+  web: run -d -p 5000:5000 --name red redrunner
 
