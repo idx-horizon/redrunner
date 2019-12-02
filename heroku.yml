@@ -4,7 +4,7 @@ build:
 release:
   command:
     - ./deployment-tasks.sh
-  image: worker
+  image: web
 run:
   web: python main.py
 
