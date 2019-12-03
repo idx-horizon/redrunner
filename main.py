@@ -239,7 +239,8 @@ def elevation(run=None):
 
 def runapp(port,debug=True):
 	print('** Port: ', port)
-	app.run(host='0.0.0.0') #app.run(port=port, debug=debug)
+	#app.run(host='0.0.0.0') #app.run(port=port, debug=debug)
+	app.run(port=port, debug=debug)
 	logout_user()
 	
 
