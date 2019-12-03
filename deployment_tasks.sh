@@ -4,4 +4,4 @@ ls
 
 # docker cp gmap.key red:/redrunner/resources/gmap.key
 
-docker cp masterREPOSITORY.db red:/redrunner/REPOSITORY.db
+# docker cp masterREPOSITORY.db red:/redrunner/REPOSITORY.db
