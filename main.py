@@ -294,7 +294,8 @@ if __name__ == '__main__':
 		rdtotals[runner['rid']]['missing'] = {'\n'.join(missing): len(missing)}
 	
 					
-	port = int(os.environ.get("RR_PORT", 8000))
+	#port = int(os.environ.get("RR_PORT", 8000))
+	port = int(os.environ.get("PORT", 8000))
 
-	runapp(port,True)
+	runapp(port,False)
 
