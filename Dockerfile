@@ -23,5 +23,8 @@ ENV RR_NAME "RED RUNNER"
 ENV RR_PUBLIC_FLAG "1"
 ENV RR_PORT 8888
 
+
+RUN docker cp masterREPOSITORY.db red:/redrunner/REPOSITORY.db
+
 # Run main.py when the container launches
 CMD ["python", "main.py"]
