@@ -24,7 +24,7 @@ ENV RR_PUBLIC_FLAG "1"
 ENV RR_PORT 8888
 
 
-COPY masterREPOSITORY.db REPOSITORY.db
+COPY masterREPOSITORY.db /redrunner/REPOSITORY.db
 
 # Run main.py when the container launches
 CMD ["python", "main.py"]
