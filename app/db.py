@@ -68,7 +68,8 @@ class DBO:
 			('2564629', 'Michael',      '25:00', 0, 'Riddlesdown'),
 			('23656',   'Eileen',       '34:00', 0, 'Clair'),
 			('3158074', 'Sam',          '30:00', 0, 'Shorne Woods'),
-			('541276', 'Sharon',        '31:00', 0, 'Woking')
+			('33202',   'Ant',          '21:00', 0, 'Fulham Palace'),
+			('541276',  'Sharon',       '31:00', 0, 'Woking')
 			
 		}:
 			r = Runner(rid=thisrunner[0],
@@ -104,6 +105,7 @@ class DBO:
 			('michael', '2564629', 'Riddlesdown', None),
 			('sam', '3158074', 'Shorne Woods', None),
 			('eileen', '23656', 'Clair', None),
+			('ant', '33202', 'Fulham Palace', None),
 			('sharon', '541276', 'Woking', None)
 		}:
 			u = User(username=thisuser[0], 
@@ -143,6 +145,7 @@ class DBO:
 			('caroline', '23656'),
 			('michael', '2564629'), #self
 			('sharon', '541276'), #self
+			('ant', '33202'), #self
 			('eileen', '23656') #self
 		}:
 			l = Runnerlink(username=link[0], rid=link[1])
