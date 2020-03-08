@@ -260,7 +260,7 @@ def count_by(runner, type='course'):
 			try:
 				ct['Sub ' + str(int(e['Time'][:2])+1) + ' min'] += 1			
 			except:
-				print('Error: runner: {} - handling time: {}'.format(runner, e['Time'])
+				print('Error: runner: {} - handling time: {}'.format(runner, e['Time']))
 	return dict(ct)
 
 		
