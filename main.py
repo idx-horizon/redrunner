@@ -257,8 +257,10 @@ def count_by(runner, type='course'):
 		elif type == 'month':
 			ct[e['Run Date'][-4:] + '-' + e['Run Date'][-7:-5] ] += 1
 		elif type == 'minute':
-			ct['Sub ' + str(int(e['Time'][:2])+1) + ' min'] += 1			
-				
+			try:
+				ct['Sub ' + str(int(e['Time'][:2])+1) + ' min'] += 1			
+			except:
+				print('Error: runner: {} - handling time: {}'.format(runner, e['Time'])
 	return dict(ct)
 
 		
